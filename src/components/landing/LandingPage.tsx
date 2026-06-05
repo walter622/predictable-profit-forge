@@ -551,8 +551,8 @@ export function LandingPage() {
           </div>
           <div className="text-sm text-muted-foreground space-y-3">
             <h4 className="text-foreground font-semibold mb-2">Contato</h4>
-            <p className="flex items-center gap-2"><Phone className="h-4 w-4" /> (11) 99897-8018</p>
-            <p className="flex items-center gap-2"><Mail className="h-4 w-4" /> thiago@omniadigital.com.br</p>
+            <p className="flex items-center gap-2"><Phone className="h-4 w-4" /><span>(11) 99897-8018</span></p>
+            <p className="flex items-center gap-2"><Mail className="h-4 w-4" /><span>thiago@omniadigital.com.br</span></p>
           </div>
           <div className="text-sm text-muted-foreground">
             <h4 className="text-foreground font-semibold mb-2">Endereço</h4>
