@@ -1,6 +1,5 @@
 import { useState } from "react";
 import logo from "@/assets/omnia-logo.png";
-import thiago from "@/assets/thiago-hero.png";
 import authorities from "@/assets/authority-faces.png";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -49,7 +48,7 @@ function Section({
     <section id={id} className={`relative py-24 px-6 ${className}`}>
       <div className="mx-auto max-w-6xl">
         {(eyebrow || title || intro) && (
-          <div className="mb-14 max-w-3xl">
+          <div className="mb-14 max-w-3xl mx-auto text-center">
             {eyebrow && (
               <span className="inline-block text-xs font-semibold tracking-[0.25em] text-primary-glow uppercase mb-4">
                 {eyebrow}
@@ -154,7 +153,7 @@ export function LandingPage() {
       {/* HERO */}
       <section className="relative pt-36 pb-24 px-6 bg-hero overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,oklch(0.58_0.24_262/0.25),transparent_50%)] pointer-events-none" />
-        <div className="relative mx-auto max-w-6xl grid lg:grid-cols-[1.1fr_1fr] gap-12 items-center">
+        <div className="relative mx-auto max-w-4xl text-center">
           <div>
             <span className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-xs font-semibold tracking-wider text-primary-glow uppercase">
               <Sparkles className="h-3.5 w-3.5" /> Onde Inteligência Vira Faturamento
@@ -166,10 +165,10 @@ export function LandingPage() {
               </span>{" "}
               em Faturamento Previsível
             </h1>
-            <p className="mt-6 text-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl">
+            <p className="mt-6 text-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto">
               Estruturamos funis de vendas, CRM, tráfego pago e processos comerciais para gerar mais clientes, mais vendas e mais lucro todos os meses.
             </p>
-            <div className="mt-8 grid grid-cols-2 sm:grid-cols-3 gap-2 max-w-2xl">
+            <div className="mt-8 grid grid-cols-2 sm:grid-cols-3 gap-2 max-w-2xl mx-auto justify-items-center sm:justify-items-start">
               {[
                 "Funis de vendas",
                 "IA aplicada a vendas",
@@ -191,7 +190,7 @@ export function LandingPage() {
                 </a>
               </Button>
             </div>
-            <div className="mt-10 grid grid-cols-3 gap-4 max-w-xl">
+            <div className="mt-10 grid grid-cols-3 gap-4 max-w-xl mx-auto">
               {[
                 ["R$ 1Bi+", "gerados em vendas"],
                 ["342", "empresas atendidas"],
@@ -203,10 +202,6 @@ export function LandingPage() {
                 </div>
               ))}
             </div>
-          </div>
-          <div className="relative">
-            <div className="absolute -inset-6 bg-gradient-primary opacity-20 blur-3xl rounded-full" />
-            <img src={thiago} alt="Thiago Batizeli — Omnia Inteligência Digital" className="relative rounded-2xl shadow-card-elevated w-full" />
           </div>
         </div>
       </section>
@@ -253,13 +248,17 @@ export function LandingPage() {
         eyebrow="VSL — O Método Omnia"
         title="A maioria usa IA para criar conteúdo. Nós usamos IA para gerar vendas."
       >
-        <div className="relative aspect-video rounded-2xl border border-border bg-gradient-card overflow-hidden shadow-card-elevated">
+        <div className="relative aspect-video rounded-2xl border border-primary/30 bg-black/60 overflow-hidden shadow-glow">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,oklch(0.58_0.24_262/0.25),transparent_70%)]" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/60" />
+          <div className="absolute inset-4 rounded-xl border border-dashed border-primary/30" />
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="text-center">
               <div className="mx-auto h-20 w-20 rounded-full bg-gradient-primary flex items-center justify-center shadow-glow">
                 <div className="ml-1 h-0 w-0 border-y-[14px] border-y-transparent border-l-[22px] border-l-primary-foreground" />
               </div>
-              <p className="mt-4 text-muted-foreground">Vídeo de apresentação em breve</p>
+              <p className="mt-4 text-sm uppercase tracking-[0.25em] text-primary-glow">Espaço reservado para o vídeo</p>
+              <p className="mt-1 text-muted-foreground text-sm">Vídeo de apresentação em breve</p>
             </div>
           </div>
         </div>
@@ -380,7 +379,7 @@ export function LandingPage() {
       {/* AUTHORITY */}
       <Section
         eyebrow="Autoridade"
-        title="13 anos ao lado de marcas e especialistas que escalaram"
+        title="A confiança de quem escala de verdade"
         intro="Marcas e especialistas ligados a projetos conduzidos por Thiago Batizeli."
       >
         <img src={authorities} alt="Caio Castro, Cris Arcangeli, Dr. Bactéria, Mari Saad, Samuel Procópio, Marcio Atalla" className="w-full rounded-2xl" />
