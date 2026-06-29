@@ -29,6 +29,32 @@ import {
 
 const CTA_LABEL = "Solicitar Análise Estratégica Gratuita";
 
+function CTAButton({
+  className = "",
+  size = "lg",
+  type = "button",
+}: {
+  className?: string;
+  size?: "sm" | "lg";
+  type?: "button" | "submit";
+}) {
+  const classes = `bg-gradient-cta hover:opacity-95 text-cta-foreground shadow-cta animate-pulse-cta h-14 px-8 text-base ${className}`;
+  if (type === "submit") {
+    return (
+      <Button type="submit" size={size} className={classes}>
+        {CTA_LABEL} <ArrowRight className="ml-2 h-5 w-5" />
+      </Button>
+    );
+  }
+  return (
+    <Button asChild size={size} className={classes}>
+      <a href="#formulario">
+        {CTA_LABEL} <ArrowRight className="ml-2 h-5 w-5" />
+      </a>
+    </Button>
+  );
+}
+
 function Section({
   id,
   eyebrow,
@@ -144,9 +170,7 @@ export function LandingPage() {
       <header className="fixed top-0 inset-x-0 z-50 backdrop-blur-md bg-background/70 border-b border-border/50">
         <div className="mx-auto max-w-6xl flex items-center justify-between px-6 py-4">
           <img src={logo} alt="Omnia Inteligência Digital" className="h-20 w-auto" />
-          <Button asChild size="sm" className="bg-gradient-primary hover:opacity-90 text-primary-foreground shadow-glow">
-            <a href="#formulario">Análise Gratuita</a>
-          </Button>
+          <CTAButton size="sm" className="h-10 px-5 text-sm" />
         </div>
       </header>
 
@@ -183,11 +207,7 @@ export function LandingPage() {
               ))}
             </div>
             <div className="mt-10">
-              <Button asChild size="lg" className="bg-gradient-primary hover:opacity-90 text-primary-foreground shadow-glow text-base h-14 px-8">
-                <a href="#formulario">
-                  {CTA_LABEL} <ArrowRight className="ml-2 h-5 w-5" />
-                </a>
-              </Button>
+              <CTAButton />
             </div>
             <div className="mt-10 grid grid-cols-3 gap-4 max-w-xl mx-auto">
               {[
@@ -239,6 +259,9 @@ export function LandingPage() {
             />
           </div>
         </div>
+        <div className="mt-10 text-center">
+          <CTAButton />
+        </div>
       </Section>
 
       {/* VSL */}
@@ -268,6 +291,9 @@ export function LandingPage() {
             </div>
           ))}
         </div>
+        <div className="mt-10 text-center">
+          <CTAButton />
+        </div>
       </Section>
 
       {/* UNIQUE VALUE */}
@@ -287,6 +313,9 @@ export function LandingPage() {
         <p className="mt-10 text-xl text-foreground/90 font-medium">
           Nosso objetivo é simples: <span className="text-primary-glow">ajudar sua empresa a vender mais com previsibilidade.</span>
         </p>
+        <div className="mt-10 text-center">
+          <CTAButton />
+        </div>
       </Section>
 
       {/* SERVICES */}
@@ -302,6 +331,9 @@ export function LandingPage() {
             </div>
           ))}
         </div>
+        <div className="mt-10 text-center">
+          <CTAButton />
+        </div>
       </Section>
 
       {/* AI APPLIED */}
@@ -313,6 +345,9 @@ export function LandingPage() {
         <div className="grid md:grid-cols-2 gap-x-12 gap-y-3">
           <CheckList items={["Qualificar leads", "Automatizar processos", "Reduzir retrabalho", "Melhorar campanhas"]} />
           <CheckList items={["Aumentar conversão", "Gerar insights estratégicos", "Acelerar tomada de decisão", "Escalar com eficiência"]} />
+        </div>
+        <div className="mt-10 text-center">
+          <CTAButton />
         </div>
       </Section>
 
@@ -335,6 +370,9 @@ export function LandingPage() {
             </p>
           </div>
         </div>
+        <div className="mt-10 text-center">
+          <CTAButton />
+        </div>
       </Section>
 
       {/* SEGMENTS */}
@@ -349,6 +387,9 @@ export function LandingPage() {
         <p className="mt-8 text-muted-foreground">
           Cada mercado possui particularidades. Mas todos precisam de <span className="text-foreground font-medium">vendas previsíveis</span>.
         </p>
+        <div className="mt-10 text-center">
+          <CTAButton />
+        </div>
       </Section>
 
       {/* RESULTS */}
@@ -373,6 +414,9 @@ export function LandingPage() {
             ))}
           </div>
         </div>
+        <div className="mt-10 text-center">
+          <CTAButton />
+        </div>
       </Section>
 
       {/* AUTHORITY */}
@@ -385,6 +429,9 @@ export function LandingPage() {
         <p className="mt-8 text-muted-foreground max-w-3xl">
           Mais de uma década aplicando Growth Marketing, Funis de Vendas e estratégias de crescimento para empresas e especialistas de alta performance.
         </p>
+        <div className="mt-10 text-center">
+          <CTAButton />
+        </div>
       </Section>
 
       {/* HOW IT WORKS */}
@@ -397,6 +444,9 @@ export function LandingPage() {
               <p className="mt-2 text-sm text-muted-foreground">{desc}</p>
             </div>
           ))}
+        </div>
+        <div className="mt-10 text-center">
+          <CTAButton />
         </div>
       </Section>
 
@@ -420,6 +470,9 @@ export function LandingPage() {
             />
           </div>
         </div>
+        <div className="mt-10 text-center">
+          <CTAButton />
+        </div>
       </Section>
 
       {/* BENEFITS */}
@@ -441,6 +494,9 @@ export function LandingPage() {
               <span className="text-foreground/90">{b}</span>
             </div>
           ))}
+        </div>
+        <div className="mt-10 text-center">
+          <CTAButton />
         </div>
       </Section>
 
@@ -494,10 +550,7 @@ export function LandingPage() {
                   <Field id="faturamento" label="Faturamento Mensal" placeholder="Ex.: R$ 300 mil" />
                   <Field id="instagram" label="Instagram" placeholder="exemplo: @thiago_batizeli" />
                 </div>
-                <Button type="submit" size="lg" className="mt-6 w-full bg-gradient-primary hover:opacity-90 text-primary-foreground shadow-glow h-14 text-base">
-                  Quero uma Análise Estratégica Gratuita
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Button>
+                <CTAButton type="submit" className="mt-6 w-full" />
                 <p className="mt-3 text-xs text-muted-foreground text-center">Resposta em até 24h úteis.</p>
               </>
             )}
@@ -515,6 +568,9 @@ export function LandingPage() {
             </AccordionItem>
           ))}
         </Accordion>
+        <div className="mt-10 text-center">
+          <CTAButton />
+        </div>
       </Section>
 
       {/* FINAL CTA */}
@@ -529,11 +585,9 @@ export function LandingPage() {
           <p className="mt-6 text-lg text-muted-foreground max-w-2xl mx-auto">
             Solicite uma análise estratégica gratuita e descubra como a Omnia pode estruturar um sistema previsível de crescimento para o seu negócio.
           </p>
-          <Button asChild size="lg" className="mt-10 bg-gradient-primary hover:opacity-90 text-primary-foreground shadow-glow h-14 px-10 text-base">
-            <a href="#formulario">
-              Agendar Reunião Estratégica <ArrowRight className="ml-2 h-5 w-5" />
-            </a>
-          </Button>
+          <div className="mt-10">
+            <CTAButton />
+          </div>
         </div>
       </section>
 
@@ -560,8 +614,9 @@ export function LandingPage() {
             </p>
           </div>
         </div>
-        <div className="mx-auto max-w-6xl mt-10 pt-6 border-t border-border text-xs text-muted-foreground">
-          © {new Date().getFullYear()} Omnia Inteligência Digital. Todos os direitos reservados.
+        <div className="mx-auto max-w-6xl mt-10 pt-6 border-t border-border text-xs text-muted-foreground flex flex-col md:flex-row items-center justify-between gap-4">
+          <span>© {new Date().getFullYear()} Omnia Inteligência Digital. Todos os direitos reservados.</span>
+          <CTAButton size="sm" className="h-10 px-5 text-sm" />
         </div>
       </footer>
     </div>

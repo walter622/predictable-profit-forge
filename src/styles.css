@@ -35,6 +35,9 @@
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
   --color-primary-glow: var(--primary-glow);
+  --color-cta: var(--cta);
+  --color-cta-foreground: var(--cta-foreground);
+  --color-cta-glow: var(--cta-glow);
   --color-secondary: var(--secondary);
   --color-secondary-foreground: var(--secondary-foreground);
   --color-muted: var(--muted);
@@ -73,6 +76,9 @@
   --primary: oklch(0.58 0.24 262);
   --primary-foreground: oklch(0.99 0 0);
   --primary-glow: oklch(0.72 0.22 258);
+  --cta: oklch(0.60 0.22 145);
+  --cta-foreground: oklch(0.99 0 0);
+  --cta-glow: oklch(0.72 0.20 145);
   --secondary: oklch(0.22 0.03 265);
   --secondary-foreground: oklch(0.98 0 0);
   --muted: oklch(0.20 0.025 265);
@@ -88,9 +94,11 @@
   --surface-elevated-2: oklch(0.24 0.035 265);
   --gradient-hero: radial-gradient(circle at 20% 50%, oklch(0.35 0.20 262 / 0.55), transparent 60%), linear-gradient(135deg, oklch(0.10 0.02 270), oklch(0.16 0.05 265));
   --gradient-primary: linear-gradient(135deg, oklch(0.58 0.24 262), oklch(0.72 0.22 258));
+  --gradient-cta: linear-gradient(135deg, oklch(0.58 0.24 145), oklch(0.72 0.20 145));
   --gradient-card: linear-gradient(160deg, oklch(0.20 0.035 268), oklch(0.15 0.025 265));
   --gradient-elevated: linear-gradient(160deg, oklch(0.24 0.04 265), oklch(0.19 0.03 265));
   --shadow-glow: 0 0 60px -10px oklch(0.58 0.24 262 / 0.5);
+  --shadow-cta: 0 0 40px -5px oklch(0.60 0.22 145 / 0.5);
   --shadow-card: 0 20px 50px -20px oklch(0 0 0 / 0.5);
   --shadow-elevated: 0 30px 60px -20px oklch(0 0 0 / 0.55), 0 0 0 1px oklch(1 0 0 / 0.04);
   --chart-1: oklch(0.646 0.222 41.116);
@@ -167,6 +175,12 @@
 @utility bg-gradient-primary {
   background-image: var(--gradient-primary);
 }
+@utility bg-gradient-cta {
+  background-image: var(--gradient-cta);
+}
+@utility shadow-cta {
+  box-shadow: var(--shadow-cta);
+}
 @utility bg-gradient-card {
   background-image: var(--gradient-card);
 }
@@ -181,4 +195,18 @@
 }
 @utility shadow-elevated {
   box-shadow: var(--shadow-elevated);
+}
+@utility animate-pulse-cta {
+  animation: pulse-cta 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse-cta {
+  0%, 100% {
+    box-shadow: 0 0 25px -5px oklch(0.60 0.22 145 / 0.5);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 45px -5px oklch(0.60 0.22 145 / 0.75);
+    transform: scale(1.02);
+  }
 }
