@@ -429,6 +429,9 @@ export function LandingPage() {
         <p className="mt-8 text-muted-foreground max-w-3xl">
           Mais de uma década aplicando Growth Marketing, Funis de Vendas e estratégias de crescimento para empresas e especialistas de alta performance.
         </p>
+        <div className="mt-10 text-center">
+          <CTAButton />
+        </div>
       </Section>
 
       {/* HOW IT WORKS */}
