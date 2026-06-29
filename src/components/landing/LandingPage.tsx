@@ -207,11 +207,7 @@ export function LandingPage() {
               ))}
             </div>
             <div className="mt-10">
-              <Button asChild size="lg" className="bg-gradient-primary hover:opacity-90 text-primary-foreground shadow-glow text-base h-14 px-8">
-                <a href="#formulario">
-                  {CTA_LABEL} <ArrowRight className="ml-2 h-5 w-5" />
-                </a>
-              </Button>
+              <CTAButton />
             </div>
             <div className="mt-10 grid grid-cols-3 gap-4 max-w-xl mx-auto">
               {[
