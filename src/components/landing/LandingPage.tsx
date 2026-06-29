@@ -346,6 +346,9 @@ export function LandingPage() {
           <CheckList items={["Qualificar leads", "Automatizar processos", "Reduzir retrabalho", "Melhorar campanhas"]} />
           <CheckList items={["Aumentar conversão", "Gerar insights estratégicos", "Acelerar tomada de decisão", "Escalar com eficiência"]} />
         </div>
+        <div className="mt-10 text-center">
+          <CTAButton />
+        </div>
       </Section>
 
       {/* FOR WHOM */}
