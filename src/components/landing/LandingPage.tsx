@@ -387,6 +387,9 @@ export function LandingPage() {
         <p className="mt-8 text-muted-foreground">
           Cada mercado possui particularidades. Mas todos precisam de <span className="text-foreground font-medium">vendas previsíveis</span>.
         </p>
+        <div className="mt-10 text-center">
+          <CTAButton />
+        </div>
       </Section>
 
       {/* RESULTS */}
