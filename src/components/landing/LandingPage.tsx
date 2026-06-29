@@ -470,6 +470,9 @@ export function LandingPage() {
             />
           </div>
         </div>
+        <div className="mt-10 text-center">
+          <CTAButton />
+        </div>
       </Section>
 
       {/* BENEFITS */}
