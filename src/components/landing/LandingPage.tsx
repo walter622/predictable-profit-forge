@@ -585,11 +585,9 @@ export function LandingPage() {
           <p className="mt-6 text-lg text-muted-foreground max-w-2xl mx-auto">
             Solicite uma análise estratégica gratuita e descubra como a Omnia pode estruturar um sistema previsível de crescimento para o seu negócio.
           </p>
-          <Button asChild size="lg" className="mt-10 bg-gradient-primary hover:opacity-90 text-primary-foreground shadow-glow h-14 px-10 text-base">
-            <a href="#formulario">
-              Agendar Reunião Estratégica <ArrowRight className="ml-2 h-5 w-5" />
-            </a>
-          </Button>
+          <div className="mt-10">
+            <CTAButton />
+          </div>
         </div>
       </section>
 
