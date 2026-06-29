@@ -550,10 +550,7 @@ export function LandingPage() {
                   <Field id="faturamento" label="Faturamento Mensal" placeholder="Ex.: R$ 300 mil" />
                   <Field id="instagram" label="Instagram" placeholder="exemplo: @thiago_batizeli" />
                 </div>
-                <Button type="submit" size="lg" className="mt-6 w-full bg-gradient-primary hover:opacity-90 text-primary-foreground shadow-glow h-14 text-base">
-                  Quero uma Análise Estratégica Gratuita
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Button>
+                <CTAButton type="submit" className="mt-6 w-full" />
                 <p className="mt-3 text-xs text-muted-foreground text-center">Resposta em até 24h úteis.</p>
               </>
             )}
