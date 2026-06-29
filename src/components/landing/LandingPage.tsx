@@ -614,8 +614,9 @@ export function LandingPage() {
             </p>
           </div>
         </div>
-        <div className="mx-auto max-w-6xl mt-10 pt-6 border-t border-border text-xs text-muted-foreground">
-          © {new Date().getFullYear()} Omnia Inteligência Digital. Todos os direitos reservados.
+        <div className="mx-auto max-w-6xl mt-10 pt-6 border-t border-border text-xs text-muted-foreground flex flex-col md:flex-row items-center justify-between gap-4">
+          <span>© {new Date().getFullYear()} Omnia Inteligência Digital. Todos os direitos reservados.</span>
+          <CTAButton size="sm" className="h-10 px-5 text-sm" />
         </div>
       </footer>
     </div>
