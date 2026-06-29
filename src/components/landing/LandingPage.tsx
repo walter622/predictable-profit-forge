@@ -143,7 +143,7 @@ export function LandingPage() {
       {/* NAV */}
       <header className="fixed top-0 inset-x-0 z-50 backdrop-blur-md bg-background/70 border-b border-border/50">
         <div className="mx-auto max-w-6xl flex items-center justify-between px-6 py-4">
-          <img src={logo} alt="Omnia Inteligência Digital" className="h-14 w-auto" />
+          <img src={logo} alt="Omnia Inteligência Digital" className="h-20 w-auto" />
           <Button asChild size="sm" className="bg-gradient-primary hover:opacity-90 text-primary-foreground shadow-glow">
             <a href="#formulario">Análise Gratuita</a>
           </Button>
@@ -541,7 +541,7 @@ export function LandingPage() {
       <footer className="border-t border-border bg-card/40 px-6 py-14">
         <div className="mx-auto max-w-6xl grid md:grid-cols-[1.4fr_1fr_1fr] gap-10">
           <div>
-            <img src={logo} alt="Omnia" className="h-16 w-auto" />
+            <img src={logo} alt="Omnia" className="h-24 w-auto" />
             <p className="mt-4 text-sm text-muted-foreground max-w-sm">
               Funis de Vendas • Inteligência Artificial • Growth Marketing
             </p>
