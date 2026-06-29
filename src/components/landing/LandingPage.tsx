@@ -487,13 +487,12 @@ export function LandingPage() {
               </div>
             ) : (
               <>
-                <div className="grid sm:grid-cols-2 gap-4">
+                <div className="space-y-4">
                   <Field id="nome" label="Nome" placeholder="Seu nome completo" required />
-                  <Field id="empresa" label="Empresa" placeholder="Nome da empresa" required />
                   <Field id="whatsapp" label="WhatsApp" placeholder="(11) 99999-9999" required />
                   <Field id="email" label="E-mail" placeholder="voce@empresa.com" type="email" required />
-                  <Field id="segmento" label="Segmento" placeholder="Ex.: Indústria" />
                   <Field id="faturamento" label="Faturamento Mensal" placeholder="Ex.: R$ 300 mil" />
+                  <Field id="instagram" label="Instagram" placeholder="exemplo: @thiago_batizeli" />
                 </div>
                 <Button type="submit" size="lg" className="mt-6 w-full bg-gradient-primary hover:opacity-90 text-primary-foreground shadow-glow h-14 text-base">
                   Quero uma Análise Estratégica Gratuita
