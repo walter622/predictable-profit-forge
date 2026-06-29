@@ -568,6 +568,9 @@ export function LandingPage() {
             </AccordionItem>
           ))}
         </Accordion>
+        <div className="mt-10 text-center">
+          <CTAButton />
+        </div>
       </Section>
 
       {/* FINAL CTA */}
