@@ -197,16 +197,16 @@
   box-shadow: var(--shadow-elevated);
 }
 @utility animate-pulse-cta {
-  animation: pulse-cta 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  animation: pulse-cta 1s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
 @keyframes pulse-cta {
   0%, 100% {
-    box-shadow: 0 0 25px -5px oklch(0.60 0.22 145 / 0.5);
+    box-shadow: 0 0 30px -5px oklch(0.60 0.22 145 / 0.6);
     transform: scale(1);
   }
   50% {
-    box-shadow: 0 0 45px -5px oklch(0.60 0.22 145 / 0.75);
-    transform: scale(1.02);
+    box-shadow: 0 0 70px -5px oklch(0.60 0.22 145 / 0.95);
+    transform: scale(1.03);
   }
 }
