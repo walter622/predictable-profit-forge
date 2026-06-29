@@ -175,6 +175,12 @@
 @utility bg-gradient-primary {
   background-image: var(--gradient-primary);
 }
+@utility bg-gradient-cta {
+  background-image: var(--gradient-cta);
+}
+@utility shadow-cta {
+  box-shadow: var(--shadow-cta);
+}
 @utility bg-gradient-card {
   background-image: var(--gradient-card);
 }
@@ -189,4 +195,18 @@
 }
 @utility shadow-elevated {
   box-shadow: var(--shadow-elevated);
+}
+@utility animate-pulse-cta {
+  animation: pulse-cta 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse-cta {
+  0%, 100% {
+    box-shadow: 0 0 25px -5px oklch(0.60 0.22 145 / 0.5);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 45px -5px oklch(0.60 0.22 145 / 0.75);
+    transform: scale(1.02);
+  }
 }
