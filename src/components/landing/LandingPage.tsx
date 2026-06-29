@@ -471,7 +471,7 @@ export function LandingPage() {
             </div>
           </div>
           <form
-            className="rounded-2xl border border-primary/30 bg-gradient-card p-8 shadow-glow"
+            className="rounded-2xl border border-primary/20 bg-surface-elevated p-8 shadow-elevated backdrop-blur-sm"
             onSubmit={(e) => {
               e.preventDefault();
               setSubmitted(true);
@@ -507,7 +507,7 @@ export function LandingPage() {
 
       {/* FAQ */}
       <Section eyebrow="FAQ" title="Perguntas frequentes">
-        <Accordion type="single" collapsible className="rounded-2xl border border-border bg-gradient-card divide-y divide-border">
+        <Accordion type="single" collapsible className="rounded-2xl border border-border/60 bg-surface-elevated shadow-elevated divide-y divide-border/60 overflow-hidden">
           {faqs.map((f, i) => (
             <AccordionItem key={i} value={`item-${i}`} className="border-0 px-6">
               <AccordionTrigger className="text-left text-base hover:no-underline py-5">{f.q}</AccordionTrigger>
@@ -589,7 +589,7 @@ function Field({
         type={type}
         placeholder={placeholder}
         required={required}
-        className="bg-background/60 border-border h-11"
+        className="bg-background/70 border-border/80 h-12 focus-visible:border-primary/60 focus-visible:ring-primary/30"
       />
     </div>
   );
