@@ -158,13 +158,13 @@ export function LandingPage() {
             <span className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-xs font-semibold tracking-wider text-primary-glow uppercase">
               <Sparkles className="h-3.5 w-3.5" /> Onde Inteligência Vira Faturamento
             </span>
-            <h1 className="mt-6 text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.02]">
+            <h1 className="mt-6 text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.05]">
               Dobramos ou até triplicamos as vendas da sua empresa com previsibilidade usando{" "}
               <span className="bg-gradient-primary bg-clip-text text-transparent">
                 Inteligência Artificial
               </span>
             </h1>
-            <p className="mt-6 text-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto">
+            <p className="mt-6 text-xl md:text-2xl text-muted-foreground leading-relaxed max-w-2xl mx-auto">
               Estruturamos funis de vendas, CRM, tráfego pago e processos comerciais para gerar mais clientes, mais vendas e mais lucro todos os meses.
             </p>
             <div className="mt-8 grid grid-cols-2 sm:grid-cols-3 gap-2 max-w-2xl mx-auto justify-items-center sm:justify-items-start">
