@@ -29,6 +29,32 @@ import {
 
 const CTA_LABEL = "Solicitar Análise Estratégica Gratuita";
 
+function CTAButton({
+  className = "",
+  size = "lg",
+  type = "button",
+}: {
+  className?: string;
+  size?: "sm" | "lg";
+  type?: "button" | "submit";
+}) {
+  const classes = `bg-gradient-cta hover:opacity-95 text-cta-foreground shadow-cta animate-pulse-cta h-14 px-8 text-base ${className}`;
+  if (type === "submit") {
+    return (
+      <Button type="submit" size={size} className={classes}>
+        {CTA_LABEL} <ArrowRight className="ml-2 h-5 w-5" />
+      </Button>
+    );
+  }
+  return (
+    <Button asChild size={size} className={classes}>
+      <a href="#formulario">
+        {CTA_LABEL} <ArrowRight className="ml-2 h-5 w-5" />
+      </a>
+    </Button>
+  );
+}
+
 function Section({
   id,
   eyebrow,
