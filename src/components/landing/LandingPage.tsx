@@ -313,6 +313,9 @@ export function LandingPage() {
         <p className="mt-10 text-xl text-foreground/90 font-medium">
           Nosso objetivo é simples: <span className="text-primary-glow">ajudar sua empresa a vender mais com previsibilidade.</span>
         </p>
+        <div className="mt-10 text-center">
+          <CTAButton />
+        </div>
       </Section>
 
       {/* SERVICES */}
