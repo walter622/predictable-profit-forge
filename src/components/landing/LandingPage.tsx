@@ -159,11 +159,10 @@ export function LandingPage() {
               <Sparkles className="h-3.5 w-3.5" /> Onde Inteligência Vira Faturamento
             </span>
             <h1 className="mt-6 text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.02]">
-              Transformamos{" "}
+              Dobramos ou até triplicamos as vendas da sua empresa com previsibilidade usando{" "}
               <span className="bg-gradient-primary bg-clip-text text-transparent">
                 Inteligência Artificial
-              </span>{" "}
-              em Faturamento Previsível
+              </span>
             </h1>
             <p className="mt-6 text-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto">
               Estruturamos funis de vendas, CRM, tráfego pago e processos comerciais para gerar mais clientes, mais vendas e mais lucro todos os meses.
