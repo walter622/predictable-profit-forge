@@ -589,7 +589,7 @@ function Field({
         type={type}
         placeholder={placeholder}
         required={required}
-        className="bg-background/60 border-border h-11"
+        className="bg-background/70 border-border/80 h-12 focus-visible:border-primary/60 focus-visible:ring-primary/30"
       />
     </div>
   );
