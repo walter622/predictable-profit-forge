@@ -370,6 +370,9 @@ export function LandingPage() {
             </p>
           </div>
         </div>
+        <div className="mt-10 text-center">
+          <CTAButton />
+        </div>
       </Section>
 
       {/* SEGMENTS */}
