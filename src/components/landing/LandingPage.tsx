@@ -183,9 +183,9 @@ export function LandingPage() {
               <Sparkles className="h-3.5 w-3.5" /> Onde Inteligência Vira Faturamento
             </span>
             <h1 className="mt-6 text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.05]">
-              Dobramos ou até triplicamos as vendas da sua empresa com previsibilidade usando{" "}
+              Como dobrar ou triplicar as vendas da sua empresa com previsibilidade usando{" "}
               <span className="bg-gradient-primary bg-clip-text text-transparent">
-                Inteligência Artificial
+                Funil de Vendas + AI
               </span>
             </h1>
             <p className="mt-6 text-xl md:text-2xl text-muted-foreground leading-relaxed max-w-2xl mx-auto">
