@@ -2,6 +2,34 @@ import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "@tanstack/react-router";
 import logo from "@/assets/omnia-logo.png";
 import authorities from "@/assets/authority-faces.png";
+import hotmart from "@/assets/hotmart.webp.asset.json";
+import clientA9 from "@/assets/a9-maquinas.png.asset.json";
+import clientCiao from "@/assets/ciao-logo.webp.asset.json";
+import clientSpirit from "@/assets/spirit-ventiladores.jpeg.asset.json";
+import clientMsBrazil from "@/assets/ms-brazil.png.asset.json";
+import clientMjHome from "@/assets/mj-home.jpeg.asset.json";
+import clientMeruoca from "@/assets/meruoca.jpeg.asset.json";
+import clientLuna from "@/assets/luna-e-cafe.jpeg.asset.json";
+import clientNextt from "@/assets/nextt-house.webp.asset.json";
+import clientCampevo from "@/assets/campevo.webp.asset.json";
+import clientAtoba from "@/assets/atoba.jpg.asset.json";
+import clientVersollato from "@/assets/clinica-versollato.webp.asset.json";
+import clientFormaq from "@/assets/formaq.jpeg.asset.json";
+
+const clientLogos = [
+  { src: clientA9.url, alt: "A9 Máquinas Agrícolas" },
+  { src: clientCiao.url, alt: "Ciao" },
+  { src: clientSpirit.url, alt: "Spirit Ventiladores" },
+  { src: clientMsBrazil.url, alt: "MS Brazil" },
+  { src: clientMjHome.url, alt: "MJ Home" },
+  { src: clientMeruoca.url, alt: "Meruoca" },
+  { src: clientLuna.url, alt: "Luna e Café" },
+  { src: clientNextt.url, alt: "Nextt House" },
+  { src: clientCampevo.url, alt: "Campevo" },
+  { src: clientAtoba.url, alt: "Átoba" },
+  { src: clientVersollato.url, alt: "Clínica Versollato" },
+  { src: clientFormaq.url, alt: "Formaq" },
+];
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
