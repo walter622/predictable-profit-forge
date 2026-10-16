@@ -3,13 +3,13 @@ import { useNavigate } from "@tanstack/react-router";
 import logo from "@/assets/omnia-logo.png";
 import authorities from "@/assets/authority-faces.png";
 import hotmart from "@/assets/hotmart.webp.asset.json";
-import clientA9 from "@/assets/a9-maquinas.png.asset.json";
+import clientA9 from "@/assets/a9-maquinas-crop.png.asset.json";
 import clientCiao from "@/assets/ciao-logo.webp.asset.json";
 import clientSpirit from "@/assets/spirit-ventiladores.jpeg.asset.json";
-import clientMsBrazil from "@/assets/ms-brazil.png.asset.json";
+import clientMsBrazil from "@/assets/ms-brazil-crop.png.asset.json";
 import clientMjHome from "@/assets/mj-home.jpeg.asset.json";
-import clientMeruoca from "@/assets/meruoca.jpeg.asset.json";
-import clientLuna from "@/assets/luna-e-cafe.jpeg.asset.json";
+import clientMeruoca from "@/assets/meruoca-crop.png.asset.json";
+import clientLuna from "@/assets/luna-e-cafe-clean2.png.asset.json";
 import clientNextt from "@/assets/nextt-house.webp.asset.json";
 import clientCampevo from "@/assets/campevo.webp.asset.json";
 import clientAtoba from "@/assets/atoba.jpg.asset.json";
@@ -17,18 +17,18 @@ import clientVersollato from "@/assets/clinica-versollato.webp.asset.json";
 import clientFormaq from "@/assets/formaq.jpeg.asset.json";
 
 const clientLogos = [
-  { src: clientA9.url, alt: "A9 Máquinas Agrícolas", bg: "#000000", size: "max-h-24" },
-  { src: clientCiao.url, alt: "Ciao", bg: "#FFFFFF", size: "max-h-16" },
-  { src: clientSpirit.url, alt: "Spirit Ventiladores", bg: "#E9521D", size: "max-h-24" },
-  { src: clientMsBrazil.url, alt: "MS Brazil", bg: "#0A1F44", size: "max-h-24" },
-  { src: clientMjHome.url, alt: "MJ Home", bg: "#EFE6DC", size: "max-h-24" },
-  { src: clientMeruoca.url, alt: "Meruoca", bg: "#F3F3F3", size: "max-h-24" },
-  { src: clientLuna.url, alt: "Luna e Café", bg: "#FFFFFF", size: "max-h-24" },
-  { src: clientNextt.url, alt: "Nextt House", bg: undefined, size: "max-h-16" },
-  { src: clientCampevo.url, alt: "Campevo", bg: "#FFFFFF", size: "max-h-16" },
-  { src: clientAtoba.url, alt: "Átoba", bg: "#FFFFFF", size: "max-h-20" },
-  { src: clientVersollato.url, alt: "Clínica Versollato", bg: "#DFD8D4", size: "max-h-20" },
-  { src: clientFormaq.url, alt: "Formaq", bg: "#000000", size: "max-h-24" },
+  { src: clientA9.url, alt: "A9 Máquinas Agrícolas", bg: "#000000", size: "w-full max-h-24" },
+  { src: clientCiao.url, alt: "Ciao", bg: "#FFFFFF", size: "max-h-16 w-auto" },
+  { src: clientSpirit.url, alt: "Spirit Ventiladores", bg: "#E9521D", size: "max-h-32 w-auto" },
+  { src: clientMsBrazil.url, alt: "MS Brazil", bg: "#0A1F44", size: "max-h-32 w-auto" },
+  { src: clientMjHome.url, alt: "MJ Home", bg: "#FFFFFF", size: "max-h-32 w-auto" },
+  { src: clientMeruoca.url, alt: "Meruoca", bg: "#F3F3F3", size: "w-full max-h-20" },
+  { src: clientLuna.url, alt: "Luna e Café", bg: "#FFFFFF", size: "max-h-36 w-auto" },
+  { src: clientNextt.url, alt: "Nextt House", bg: undefined, size: "max-h-16 w-auto" },
+  { src: clientCampevo.url, alt: "Campevo", bg: "#FFFFFF", size: "max-h-16 w-auto" },
+  { src: clientAtoba.url, alt: "Átoba", bg: "#FFFFFF", size: "max-h-28 w-auto" },
+  { src: clientVersollato.url, alt: "Clínica Versollato", bg: "#DFD8D4", size: "max-h-32 w-auto" },
+  { src: clientFormaq.url, alt: "Formaq", bg: "#000000", size: "max-h-36 w-auto" },
 ];
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -425,7 +425,7 @@ export function LandingPage() {
                   src={c.src}
                   alt={c.alt}
                   loading="lazy"
-                  className={`${c.size} w-auto max-w-full object-contain`}
+                  className={`${c.size} max-w-full object-contain`}
                 />
               </div>
             ))}
