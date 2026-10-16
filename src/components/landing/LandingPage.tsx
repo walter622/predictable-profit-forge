@@ -31,7 +31,7 @@ import {
   Clock,
 } from "lucide-react";
 
-const CTA_LABEL = "Solicitar Análise Estratégica Gratuita";
+const CTA_LABEL = "Quero análise estratégica";
 
 function CTAButton({
   className = "",
@@ -249,7 +249,7 @@ function LeadForm() {
       onSubmit={submit}
       className="scroll-mt-28 rounded-2xl border border-primary/25 bg-surface-elevated p-6 md:p-8 shadow-elevated"
     >
-      <h2 className="text-2xl md:text-3xl font-bold leading-tight">Solicite sua Análise Estratégica Gratuita</h2>
+      <h2 className="text-2xl md:text-3xl font-bold leading-tight">Solicite sua Análise Estratégica</h2>
       <p className="mt-2 text-sm text-muted-foreground">
         Nossa equipe analisa seu marketing, funil, CRM e processo comercial e devolve um plano de ação.
       </p>
@@ -338,15 +338,15 @@ export function LandingPage() {
             href="#formulario"
             className="hidden sm:inline-flex rounded-md bg-gradient-cta px-5 py-2.5 text-sm font-bold uppercase text-cta-foreground shadow-cta"
           >
-            Análise gratuita
+            Análise estratégica
           </a>
         </div>
       </header>
 
       {/* 1. HERO */}
       <section className="relative pt-28 md:pt-36 pb-16 px-6 bg-hero overflow-hidden">
-        <div className="relative mx-auto max-w-6xl grid lg:grid-cols-[1.15fr_1fr] gap-x-12 gap-y-8 items-start">
-          <div className="order-1 text-center lg:text-left">
+        <div className="relative mx-auto max-w-6xl">
+          <div className="text-center max-w-4xl mx-auto">
             <span className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-xs font-semibold tracking-wider text-primary-glow uppercase">
               <Sparkles className="h-3.5 w-3.5" /> Onde Inteligência Vira Faturamento
             </span>
@@ -354,26 +354,15 @@ export function LandingPage() {
               Como dobrar ou triplicar as vendas da sua empresa com previsibilidade usando{" "}
               <span className="bg-gradient-primary bg-clip-text text-transparent">Funil de Vendas + IA</span>
             </h1>
+            <p className="mt-6 text-lg md:text-xl text-muted-foreground leading-relaxed">
+              Utilizamos a metodologia <strong className="text-foreground">Funil de Vendas Previsível</strong>, que envolve CRM, gestão de tráfego pago, processos comerciais e gestão de CRM, para atrair novos clientes, gerar mais vendas e mais lucro todos os meses. Solicite um diagnóstico estratégico.
+            </p>
           </div>
 
-          <div className="order-2 lg:row-span-3 lg:order-none lg:col-start-2 lg:row-start-1 grid gap-8">
-            <div className="lg:hidden"><VSL /></div>
+          <div className="mt-12 grid lg:grid-cols-[1.3fr_1fr] gap-8 items-center">
+            <div><VSL /></div>
             <div ref={formWrap}><LeadForm /></div>
           </div>
-
-          <div className="order-3 text-center lg:text-left">
-            <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
-              Estruturamos funis de vendas, CRM, tráfego pago e processos comerciais para gerar mais clientes, mais vendas e mais lucro todos os meses.
-            </p>
-            <div className="mt-6 flex flex-wrap justify-center lg:justify-start gap-2">
-              {tags.map((t) => (
-                <span key={t} className="inline-flex items-center gap-1.5 rounded-full border border-border bg-card/60 px-3 py-1.5 text-xs text-foreground/85">
-                  <Check className="h-3.5 w-3.5 text-primary-glow" strokeWidth={3} /> {t}
-                </span>
-              ))}
-            </div>
-          </div>
-          <div className="hidden lg:block order-4"><VSL /></div>
         </div>
       </section>
 
@@ -635,7 +624,7 @@ export function LandingPage() {
             Vamos colocar <span className="bg-gradient-primary bg-clip-text text-transparent">inteligência</span> no seu faturamento?
           </h2>
           <p className="mt-6 text-lg text-muted-foreground">
-            Solicite uma análise estratégica gratuita e descubra como a Omnia pode estruturar um sistema previsível de crescimento para o seu negócio.
+            Solicite uma análise estratégica e descubra como a Omnia pode estruturar um sistema previsível de crescimento para o seu negócio.
           </p>
           <div className="mt-10"><CTAButton /></div>
         </div>
@@ -678,7 +667,7 @@ export function LandingPage() {
           href="#formulario"
           className="flex w-full items-center justify-center gap-2 rounded-md bg-gradient-cta py-4 text-sm font-bold uppercase text-cta-foreground shadow-cta animate-pulse-cta"
         >
-          Solicitar análise gratuita <ArrowRight className="h-4 w-4" />
+          Quero análise estratégica <ArrowRight className="h-4 w-4" />
         </a>
       </div>
     </div>
