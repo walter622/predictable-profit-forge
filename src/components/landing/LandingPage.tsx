@@ -1,8 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "@tanstack/react-router";
-import logo from "@/assets/omnia-logo.png";
-import authorities from "@/assets/authority-faces.png";
-import hotmart from "@/assets/hotmart.webp.asset.json";
+import thiago from "@/assets/thiago-hero.png";
+import expCaio from "@/assets/experts/caio.webp";
+import expCris from "@/assets/experts/cris.webp";
+import expBacteria from "@/assets/experts/bacteria.webp";
+import expMari from "@/assets/experts/mari.webp";
+import expSamuel from "@/assets/experts/samuel.webp";
+import expAtalla from "@/assets/experts/atalla.webp";
 import clientA9 from "@/assets/a9-maquinas-crop.png.asset.json";
 import clientCiao from "@/assets/ciao-logo.webp.asset.json";
 import clientSpirit from "@/assets/spirit-ventiladores.jpeg.asset.json";
@@ -17,18 +21,27 @@ import clientVersollato from "@/assets/clinica-versollato.webp.asset.json";
 import clientFormaq from "@/assets/formaq.jpeg.asset.json";
 
 const clientLogos = [
-  { src: clientA9.url, alt: "A9 Máquinas Agrícolas", bg: "#000000", size: "w-full max-h-24" },
-  { src: clientCiao.url, alt: "Ciao", bg: "#FFFFFF", size: "max-h-16 w-auto" },
-  { src: clientSpirit.url, alt: "Spirit Ventiladores", bg: "#E9521D", size: "max-h-32 w-auto" },
-  { src: clientMsBrazil.url, alt: "MS Brazil", bg: "#0A1F44", size: "max-h-32 w-auto" },
-  { src: clientMjHome.url, alt: "MJ Home", bg: "#FFFFFF", size: "max-h-32 w-auto" },
-  { src: clientMeruoca.url, alt: "Meruoca", bg: "#F3F3F3", size: "w-full max-h-20" },
-  { src: clientLuna.url, alt: "Luna e Café", bg: "#FFFFFF", size: "max-h-36 w-auto" },
-  { src: clientNextt.url, alt: "Nextt House", bg: undefined, size: "max-h-16 w-auto" },
-  { src: clientCampevo.url, alt: "Campevo", bg: "#FFFFFF", size: "max-h-16 w-auto" },
-  { src: clientAtoba.url, alt: "Átoba", bg: "#FFFFFF", size: "max-h-28 w-auto" },
-  { src: clientVersollato.url, alt: "Clínica Versollato", bg: "#DFD8D4", size: "max-h-32 w-auto" },
-  { src: clientFormaq.url, alt: "Formaq", bg: "#000000", size: "max-h-36 w-auto" },
+  { src: clientA9.url, alt: "A9 Máquinas Agrícolas" },
+  { src: clientCiao.url, alt: "Ciao" },
+  { src: clientSpirit.url, alt: "Spirit Ventiladores" },
+  { src: clientMsBrazil.url, alt: "MS Brazil" },
+  { src: clientMjHome.url, alt: "MJ Home" },
+  { src: clientMeruoca.url, alt: "Meruoca" },
+  { src: clientLuna.url, alt: "Luna e Café" },
+  { src: clientNextt.url, alt: "Nextt House" },
+  { src: clientCampevo.url, alt: "Campevo" },
+  { src: clientAtoba.url, alt: "Átoba" },
+  { src: clientVersollato.url, alt: "Clínica Versollato" },
+  { src: clientFormaq.url, alt: "Formaq" },
+];
+
+const experts = [
+  { src: expCaio, name: "Caio Castro" },
+  { src: expCris, name: "Cris Arcangeli" },
+  { src: expBacteria, name: "Dr. Bactéria" },
+  { src: expMari, name: "Mari Saad" },
+  { src: expSamuel, name: "Samuel Procópio" },
+  { src: expAtalla, name: "Marcio Atalla" },
 ];
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -52,6 +65,7 @@ import {
   Workflow,
   Sparkles,
   Phone,
+  ChevronRight,
   Mail,
   MapPin,
   Play,
@@ -70,20 +84,28 @@ function CTAButton({
   label?: string;
   type?: "button" | "submit";
 }) {
-  const classes = `bg-gradient-cta hover:opacity-95 text-cta-foreground shadow-cta animate-pulse-cta h-auto min-h-14 py-4 px-8 text-base font-bold uppercase tracking-wide whitespace-normal text-center ${className}`;
+  const classes = `bg-cta hover:bg-cta-hover text-cta-foreground rounded-[10px] h-[52px] px-7 text-[15px] font-bold uppercase tracking-wide whitespace-normal text-center transition-colors ${className}`;
   if (type === "submit") {
     return (
       <Button type="submit" size="lg" className={classes}>
-        {label} <ArrowRight className="ml-2 h-5 w-5 shrink-0" />
+        {label} <ArrowRight className="ml-1 h-5 w-5 shrink-0" />
       </Button>
     );
   }
   return (
     <Button asChild size="lg" className={classes}>
       <a href="#formulario">
-        {label} <ArrowRight className="ml-2 h-5 w-5 shrink-0" />
+        {label} <ArrowRight className="ml-1 h-5 w-5 shrink-0" />
       </a>
     </Button>
+  );
+}
+
+function Eyebrow({ children }: { children: React.ReactNode }) {
+  return (
+    <span className="inline-block rounded-full bg-primary-soft px-3 py-1 text-xs font-semibold uppercase tracking-wider text-primary">
+      {children}
+    </span>
   );
 }
 
@@ -94,7 +116,7 @@ function Section({
   intro,
   children,
   className = "",
-  cta = true,
+  cta = false,
   ctaLabel,
 }: {
   id?: string;
@@ -107,19 +129,15 @@ function Section({
   ctaLabel?: string;
 }) {
   return (
-    <section id={id} className={`relative py-20 md:py-24 px-6 ${className}`}>
-      <div className="mx-auto max-w-6xl">
+    <section id={id} data-reveal className={`py-16 md:py-24 px-5 md:px-6 ${className}`}>
+      <div className="mx-auto max-w-[1200px]">
         {(eyebrow || title || intro) && (
-          <div className="mb-12 max-w-3xl mx-auto text-center">
-            {eyebrow && (
-              <span className="inline-block text-xs font-semibold tracking-[0.25em] text-primary-glow uppercase mb-4">
-                {eyebrow}
-              </span>
-            )}
+          <div className="mb-10 md:mb-12 max-w-3xl mx-auto text-center">
+            {eyebrow && <Eyebrow>{eyebrow}</Eyebrow>}
             {title && (
-              <h2 className="text-3xl md:text-5xl font-bold text-foreground leading-[1.08]">{title}</h2>
+              <h2 className="mt-4 text-[26px] md:text-[36px] leading-tight text-foreground">{title}</h2>
             )}
-            {intro && <p className="mt-5 text-lg text-muted-foreground leading-relaxed">{intro}</p>}
+            {intro && <p className="mt-4 text-base md:text-[17px] text-muted-foreground">{intro}</p>}
           </div>
         )}
         {children}
@@ -133,14 +151,22 @@ function Section({
   );
 }
 
+const card = "rounded-2xl border border-border bg-card shadow-soft";
+
+function IconBox({ icon: Icon }: { icon: React.ComponentType<{ className?: string; strokeWidth?: number }> }) {
+  return (
+    <div className="h-10 w-10 rounded-lg bg-primary-soft flex items-center justify-center">
+      <Icon className="h-5 w-5 text-primary" strokeWidth={1.75} />
+    </div>
+  );
+}
+
 function CheckList({ items }: { items: string[] }) {
   return (
     <ul className="space-y-3">
       {items.map((i) => (
-        <li key={i} className="flex items-start gap-3 text-foreground/90">
-          <span className="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-gradient-primary">
-            <Check className="h-3 w-3 text-primary-foreground" strokeWidth={3} />
-          </span>
+        <li key={i} className="flex items-start gap-3 text-foreground">
+          <Check className="mt-1 h-5 w-5 shrink-0 text-primary" strokeWidth={2} />
           <span>{i}</span>
         </li>
       ))}
@@ -153,24 +179,13 @@ function CrossList({ items }: { items: string[] }) {
     <ul className="space-y-3">
       {items.map((i) => (
         <li key={i} className="flex items-start gap-3 text-muted-foreground">
-          <span className="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-destructive/20">
-            <X className="h-3 w-3 text-destructive" strokeWidth={3} />
-          </span>
+          <X className="mt-1 h-5 w-5 shrink-0 text-destructive" strokeWidth={2} />
           <span>{i}</span>
         </li>
       ))}
     </ul>
   );
 }
-
-const tags = [
-  "Funis de vendas",
-  "IA aplicada a vendas",
-  "CRM e processos comerciais",
-  "Tráfego pago",
-  "Growth Marketing",
-  "Automação & KPIs",
-];
 
 const services = [
   { icon: Workflow, title: "Funil de Vendas", desc: "Estruturação completa da jornada do cliente." },
@@ -181,15 +196,16 @@ const services = [
   { icon: TrendingUp, title: "Growth Marketing", desc: "Estratégias orientadas por crescimento." },
   { icon: BarChart3, title: "Dashboards & KPIs", desc: "Gestão baseada em dados reais." },
   { icon: Sparkles, title: "Consultoria Estratégica", desc: "Planejamento e acompanhamento executivo." },
+  { icon: Check, title: "Acompanhamento", desc: "Reuniões periódicas com foco em receita." },
 ];
 
 const metrics = [
-  ["Leads", "Contatos com perfil real de compra"],
-  ["Oportunidades", "Leads qualificados no pipeline do comercial"],
-  ["Conversões", "Oportunidades que viram vendas"],
-  ["Ticket médio", "Quanto cada cliente deixa por compra"],
-  ["Receita", "O faturamento gerado pelo funil"],
-  ["Lucro", "O que sobra depois do investimento"],
+  { icon: Users, t: "Leads", d: "Contatos com perfil real de compra" },
+  { icon: Target, t: "Oportunidades", d: "Leads qualificados no pipeline do comercial" },
+  { icon: TrendingUp, t: "Conversões", d: "Oportunidades que viram vendas" },
+  { icon: BarChart3, t: "Ticket médio", d: "Quanto cada cliente deixa por compra" },
+  { icon: Workflow, t: "Receita", d: "O faturamento gerado pelo funil" },
+  { icon: Sparkles, t: "Lucro", d: "O que sobra depois do investimento" },
 ];
 
 const cases = [
@@ -216,6 +232,16 @@ const steps = [
   ["06", "Escala", "Mais previsibilidade, vendas e lucro."],
 ];
 
+const comparison = [
+  ["Foco em posts", "Foco em vendas e crescimento"],
+  ["Foco em seguidores", "Foco em indicadores e previsibilidade"],
+  ["Foco em alcance", "IA aplicada ao negócio"],
+  ["Métricas de vaidade", "CRM e comercial integrados"],
+  ["Relatórios de engajamento", "Estratégia orientada por receita"],
+];
+
+const benefits = ["Mais clientes", "Mais oportunidades", "Mais vendas", "Mais previsibilidade", "Mais produtividade", "Mais controle de indicadores", "Menos desperdício de mídia", "Menos dependência de indicação"];
+
 const faqs = [
   { q: "A análise é gratuita mesmo?", a: "Sim. A análise estratégica não tem custo e não obriga você a contratar a Omnia." },
   { q: "A Omnia atende qualquer empresa?", a: "Atendemos empresas com produto ou serviço validado que querem estruturar o crescimento. Na análise, avaliamos se faz sentido para o seu momento." },
@@ -227,10 +253,10 @@ const faqs = [
 ];
 
 const revenueOptions = [
-  "De R$ 50 mil a R$ 100 mil",
-  "De R$ 100 mil a R$ 200 mil",
-  "De R$ 200 mil a R$ 500 mil",
-  "De R$ 500 mil a R$ 1 milhão",
+  "R$ 50 mil a R$ 100 mil",
+  "R$ 100 mil a R$ 200 mil",
+  "R$ 200 mil a R$ 500 mil",
+  "R$ 500 mil a R$ 1 milhão",
   "Mais de R$ 1 milhão",
 ];
 
@@ -242,27 +268,29 @@ function maskPhone(v: string) {
 }
 
 type FormState = { nome: string; email: string; whatsapp: string; empresa: string; faturamento: string };
+type FieldKey = "nome" | "email" | "whatsapp" | "empresa";
+
+function validate(k: FieldKey, val: string): string | undefined {
+  if (k === "nome" && val.trim().length < 2) return "Informe seu nome.";
+  if (k === "email" && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val.trim())) return "E-mail inválido.";
+  if (k === "whatsapp" && val.replace(/\D/g, "").length < 10) return "Informe o WhatsApp com DDD.";
+  if (k === "empresa" && val.trim().length < 2) return "Informe a empresa.";
+  return undefined;
+}
 
 function LeadForm() {
   const navigate = useNavigate();
   const [v, setV] = useState<FormState>({ nome: "", email: "", whatsapp: "", empresa: "", faturamento: "" });
-  const [errors, setErrors] = useState<Partial<Record<keyof FormState, string>>>({});
+  const [touched, setTouched] = useState<Partial<Record<FieldKey, boolean>>>({});
 
-  const set = (k: keyof FormState, val: string) => {
-    setV((s) => ({ ...s, [k]: val }));
-    setErrors((e) => ({ ...e, [k]: undefined }));
-  };
+  const set = (k: keyof FormState, val: string) => setV((s) => ({ ...s, [k]: val }));
+  const err = (k: FieldKey) => (touched[k] ? validate(k, v[k]) : undefined);
 
   const submit = (e: React.FormEvent) => {
     e.preventDefault();
-    const err: typeof errors = {};
-    if (v.nome.trim().length < 2) err.nome = "Informe seu nome.";
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.email.trim())) err.email = "Informe um e-mail válido.";
-    if (v.whatsapp.replace(/\D/g, "").length < 10) err.whatsapp = "Informe um WhatsApp com DDD.";
-    if (v.empresa.trim().length < 2) err.empresa = "Informe o nome da empresa.";
-    setErrors(err);
-    if (Object.keys(err).length) return;
-    // UTMs da URL atual são preservados na página de obrigado
+    const keys: FieldKey[] = ["nome", "email", "whatsapp", "empresa"];
+    setTouched({ nome: true, email: true, whatsapp: true, empresa: true });
+    if (keys.some((k) => validate(k, v[k]))) return;
     const utms: Record<string, string> = {};
     new URLSearchParams(window.location.search).forEach((val, key) => {
       if (key.startsWith("utm_")) utms[key] = val;
@@ -270,74 +298,82 @@ function LeadForm() {
     navigate({ to: "/obrigado", search: { nome: v.nome.trim().split(" ")[0], ...utms } as never });
   };
 
+  const fieldProps = (k: FieldKey) => ({
+    value: v[k],
+    error: err(k),
+    onBlur: () => setTouched((t) => ({ ...t, [k]: true })),
+  });
+
   return (
     <form
       id="formulario"
       noValidate
       onSubmit={submit}
-      className="scroll-mt-28 rounded-2xl border border-primary/25 bg-surface-elevated p-6 md:p-8 shadow-elevated"
+      className="scroll-mt-24 w-full rounded-2xl border border-border bg-card p-6 md:p-7 shadow-form"
     >
-      <h2 className="text-2xl md:text-3xl font-bold leading-tight">Solicite sua Análise Estratégica</h2>
-      <p className="mt-2 text-sm text-muted-foreground">
-        Nossa equipe analisa seu marketing, funil, CRM e processo comercial e devolve um plano de ação.
+      <h2 className="text-[22px] leading-tight">Solicite sua Análise Estratégica</h2>
+      <p className="mt-1 text-sm text-muted-foreground">
+        Analisamos seu marketing, funil, CRM e comercial e devolvemos um plano de ação.
       </p>
-      <div className="mt-6 space-y-4">
-        <Field id="nome" label="Nome" placeholder="Seu nome" value={v.nome} onChange={(x) => set("nome", x)} error={errors.nome} autoComplete="name" />
-        <Field id="email" label="E-mail" type="email" placeholder="Seu melhor e-mail" value={v.email} onChange={(x) => set("email", x)} error={errors.email} autoComplete="email" />
-        <Field id="whatsapp" label="WhatsApp" type="tel" placeholder="(00) 00000-0000" value={v.whatsapp} onChange={(x) => set("whatsapp", maskPhone(x))} error={errors.whatsapp} autoComplete="tel" />
-        <Field id="empresa" label="Nome da empresa" placeholder="Nome da sua empresa" value={v.empresa} onChange={(x) => set("empresa", x)} error={errors.empresa} autoComplete="organization" />
-        <fieldset>
-          <legend className="text-sm font-medium text-foreground/90 mb-2">
-            Faturamento mensal <span className="text-muted-foreground font-normal">(opcional)</span>
-          </legend>
-          <div className="grid gap-2">
-            {revenueOptions.map((o) => {
-              const active = v.faturamento === o;
-              return (
-                <button
-                  type="button"
-                  key={o}
-                  aria-pressed={active}
-                  onClick={() => set("faturamento", active ? "" : o)}
-                  className={`rounded-lg border px-4 py-3 text-left text-sm transition-colors ${
-                    active
-                      ? "border-primary bg-primary/15 text-foreground"
-                      : "border-border/80 bg-background/60 text-foreground/85 hover:border-primary/50"
-                  }`}
-                >
-                  {o}
-                </button>
-              );
-            })}
-          </div>
-        </fieldset>
+      <div className="mt-5 grid gap-x-3 gap-y-3.5 sm:grid-cols-2">
+        <Field id="nome" label="Nome" placeholder="Seu nome" {...fieldProps("nome")} onChange={(x) => set("nome", x)} autoComplete="name" />
+        <Field id="email" label="E-mail" type="email" placeholder="voce@empresa.com" {...fieldProps("email")} onChange={(x) => set("email", x)} autoComplete="email" />
+        <Field id="whatsapp" label="WhatsApp" type="tel" placeholder="(00) 00000-0000" {...fieldProps("whatsapp")} onChange={(x) => set("whatsapp", maskPhone(x))} autoComplete="tel" />
+        <Field id="empresa" label="Nome da empresa" placeholder="Sua empresa" {...fieldProps("empresa")} onChange={(x) => set("empresa", x)} autoComplete="organization" />
       </div>
-      <CTAButton type="submit" className="mt-6 w-full" />
-      <p className="mt-3 flex items-center justify-center gap-1.5 text-xs text-muted-foreground">
-        <Clock className="h-3.5 w-3.5" /> Leva menos de 1 minuto. Resposta em até 24h úteis.
-      </p>
-      <p className="mt-2 flex items-center justify-center gap-1.5 text-[11px] text-muted-foreground/80">
-        <Lock className="h-3 w-3" /> Seus dados estão seguros e não serão compartilhados.{" "}
-        <a href="#privacidade" className="underline hover:text-foreground">Política de privacidade</a>
-      </p>
+      <fieldset className="mt-4">
+        <legend className="text-sm font-medium text-foreground mb-2">
+          Faturamento mensal <span className="text-muted-foreground font-normal">(opcional)</span>
+        </legend>
+        <div className="grid grid-cols-2 gap-2">
+          {revenueOptions.map((o) => {
+            const active = v.faturamento === o;
+            return (
+              <button
+                type="button"
+                key={o}
+                aria-pressed={active}
+                onClick={() => set("faturamento", active ? "" : o)}
+                className={`rounded-lg border px-3 py-2 text-left text-[13px] transition-colors ${
+                  active
+                    ? "border-primary bg-primary-soft text-primary font-medium"
+                    : "border-input bg-card text-foreground hover:border-primary/50"
+                }`}
+              >
+                {o}
+              </button>
+            );
+          })}
+        </div>
+      </fieldset>
+      <CTAButton type="submit" label="Quero minha análise estratégica" className="mt-5 w-full" />
+      <div className="mt-3 space-y-1 text-xs text-muted-foreground">
+        <p className="flex items-center justify-center gap-1.5">
+          <Clock className="h-3.5 w-3.5" /> Leva menos de 1 minuto. Resposta em até 24h úteis.
+        </p>
+        <p className="flex items-center justify-center gap-1.5">
+          <Lock className="h-3.5 w-3.5" /> Seus dados estão seguros.
+        </p>
+      </div>
     </form>
   );
 }
 
 function VSL() {
   return (
-    <div className="relative mx-auto w-full max-w-[340px] aspect-[9/16] rounded-2xl border border-primary/30 bg-card overflow-hidden shadow-glow">
-      <div className="absolute inset-0 bg-hero" />
+    <div className="w-full md:w-[304px] shrink-0">
       <button
         type="button"
         aria-label="Assistir vídeo"
-        className="absolute inset-0 flex flex-col items-center justify-center gap-4"
+        className="group relative block w-full aspect-[9/16] max-h-[70vh] md:max-h-none rounded-[20px] overflow-hidden bg-navy"
       >
-        <span className="h-20 w-20 rounded-full bg-gradient-primary flex items-center justify-center shadow-glow">
-          <Play className="h-8 w-8 ml-1 text-primary-foreground" fill="currentColor" />
+        <img src={thiago} alt="Thiago Batizeli, fundador da Omnia" className="absolute inset-0 h-full w-full object-cover" />
+        <span className="absolute inset-0 bg-navy/25" />
+        <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-16 w-16 rounded-full bg-card flex items-center justify-center transition-transform group-hover:scale-105">
+          <Play className="h-6 w-6 ml-1 text-foreground" fill="currentColor" />
         </span>
-        <span className="text-xs uppercase tracking-[0.25em] text-primary-glow">Assista ao vídeo</span>
       </button>
+      <p className="mt-2 text-center text-sm text-muted-foreground">Assista ao vídeo (2 min)</p>
     </div>
   );
 }
@@ -350,352 +386,365 @@ export function LandingPage() {
     const el = formWrap.current;
     if (!el) return;
     const obs = new IntersectionObserver(([entry]) => {
-      // mostra quando o formulário saiu da tela por cima (usuário já passou dele)
       setShowSticky(!entry.isIntersecting && entry.boundingClientRect.top < 0);
     });
     obs.observe(el);
     return () => obs.disconnect();
   }, []);
 
+  useEffect(() => {
+    const els = Array.from(document.querySelectorAll<HTMLElement>("[data-reveal]"));
+    const obs = new IntersectionObserver(
+      (entries) =>
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.classList.remove("opacity-0");
+            e.target.classList.add("fade-in-view");
+            obs.unobserve(e.target);
+          }
+        }),
+      { rootMargin: "0px 0px -10% 0px" },
+    );
+    els.forEach((el) => {
+      if (el.getBoundingClientRect().top > window.innerHeight) {
+        el.classList.add("opacity-0");
+        obs.observe(el);
+      }
+    });
+    return () => obs.disconnect();
+  }, []);
+
   return (
-    <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
-      <header className="fixed top-0 inset-x-0 z-50 backdrop-blur-md bg-background/75 border-b border-border/50">
-        <div className="mx-auto max-w-6xl flex items-center justify-between px-6 py-3">
-          <img src={logo} alt="Omnia Inteligência Digital" className="h-14 md:h-20 w-auto" />
+    <div className="min-h-screen bg-background text-foreground overflow-x-hidden text-base md:text-[17px]">
+      <header className="fixed top-0 inset-x-0 z-50 h-[72px] bg-background border-b border-border">
+        <div className="mx-auto max-w-[1200px] h-full flex items-center justify-between px-5 md:px-6">
+          <a href="#" className="font-display text-[28px] font-bold lowercase tracking-tight text-foreground" style={{ fontFamily: "var(--font-display)" }}>
+            omnia
+          </a>
           <a
             href="#formulario"
-            className="hidden sm:inline-flex rounded-md bg-gradient-cta px-5 py-2.5 text-sm font-bold uppercase text-cta-foreground shadow-cta"
+            className="inline-flex rounded-lg bg-cta hover:bg-cta-hover px-4 py-2 text-sm font-semibold text-cta-foreground transition-colors"
           >
-            Análise estratégica
+            Análise Estratégica
           </a>
         </div>
       </header>
 
-      {/* 1. HERO */}
-      <section className="relative pt-28 md:pt-36 pb-16 px-6 bg-hero overflow-hidden">
-        <div className="relative mx-auto max-w-6xl">
-          <div className="text-center max-w-4xl mx-auto">
-            <span className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-xs font-semibold tracking-wider text-primary-glow uppercase">
-              <Sparkles className="h-3.5 w-3.5" /> Onde Inteligência Vira Faturamento
-            </span>
-            <h1 className="mt-5 text-3xl md:text-5xl font-bold leading-[1.08]">
+      {/* HERO */}
+      <section className="pt-[96px] md:pt-[100px] pb-10 md:pb-12 px-5 md:px-6">
+        <div className="mx-auto max-w-[1200px]">
+          <div className="text-center mx-auto">
+            <Eyebrow>Onde inteligência vira faturamento</Eyebrow>
+            <h1 className="mt-3 mx-auto max-w-[1180px] text-[32px] md:text-[44px] lg:text-[48px] leading-[1.15]">
               Como dobrar ou triplicar as vendas da sua empresa com previsibilidade usando{" "}
-              <span className="bg-gradient-primary bg-clip-text text-transparent">Funil de Vendas + IA</span>
+              <span className="text-primary">Funil de Vendas + IA</span>
             </h1>
-            <p className="mt-6 text-lg md:text-xl text-muted-foreground leading-relaxed">
-              Utilizamos a metodologia <strong className="text-foreground">Funil de Vendas Previsível</strong>, que envolve CRM, gestão de tráfego pago, processos comerciais e gestão de CRM, para atrair novos clientes, gerar mais vendas e mais lucro todos os meses. Solicite um diagnóstico estratégico.
+            <p className="mt-3 mx-auto max-w-[720px] text-base md:text-lg text-muted-foreground">
+              Estruturamos funis de vendas, CRM, tráfego pago e processos comerciais para gerar mais clientes, mais vendas e mais lucro todos os meses.
             </p>
           </div>
 
-          <div className="mt-12 grid lg:grid-cols-[1.3fr_1fr] gap-8 items-center">
-            <div><VSL /></div>
-            <div ref={formWrap}><LeadForm /></div>
+          <div className="mt-7 flex flex-col md:flex-row md:items-stretch md:justify-center gap-8 md:gap-12">
+            <VSL />
+            <div ref={formWrap} className="w-full md:w-[440px] shrink-0">
+              <LeadForm />
+            </div>
           </div>
         </div>
       </section>
 
       {/* NUMBERS STRIP */}
-      <div className="border-y border-border bg-card/60">
+      <div className="bg-secondary border-y border-border">
         <div className="mx-auto max-w-5xl grid grid-cols-3 divide-x divide-border">
           {[
             ["R$ 1 Bi+", "gerados em vendas"],
             ["342", "empresas atendidas"],
             ["13 anos", "de experiência"],
           ].map(([n, l]) => (
-            <div key={l} className="py-6 px-3 text-center">
-              <div className="text-2xl md:text-4xl font-bold bg-gradient-primary bg-clip-text text-transparent">{n}</div>
-              <div className="mt-1 text-xs md:text-sm text-muted-foreground">{l}</div>
+            <div key={l} className="py-8 px-3 text-center">
+              <div className="text-2xl md:text-[40px] font-bold leading-none text-foreground" style={{ fontFamily: "var(--font-display)" }}>{n}</div>
+              <div className="mt-2 text-xs md:text-sm text-muted-foreground">{l}</div>
             </div>
           ))}
         </div>
       </div>
 
-      {/* 2. AUTORIDADE */}
-      <Section eyebrow="Autoridade" title="Quem já cresce com a Omnia">
-        <div className="text-center">
-          <h3 className="text-xl md:text-2xl font-semibold">Empresas que confiam na Omnia</h3>
-          <div className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-4">
-            {clientLogos.map((c) => (
-              <div
-                key={c.alt}
-                className="rounded-xl border border-border bg-card/60 px-4 py-6 flex items-center justify-center"
-                style={c.bg ? { backgroundColor: c.bg, borderColor: c.bg } : undefined}
-              >
-                <img
-                  src={c.src}
-                  alt={c.alt}
-                  loading="lazy"
-                  className={`${c.size} max-w-full object-contain`}
-                />
-              </div>
-            ))}
-          </div>
+      {/* AUTORIDADE */}
+      <Section eyebrow="Autoridade" title="Empresas que confiam na Omnia" cta>
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+          {clientLogos.map((c) => (
+            <div key={c.alt} className="group h-24 rounded-xl border border-border bg-card p-5 flex items-center justify-center">
+              <img
+                src={c.src}
+                alt={c.alt}
+                loading="lazy"
+                className="max-h-10 max-w-[140px] w-auto object-contain grayscale opacity-70 transition group-hover:grayscale-0 group-hover:opacity-100"
+              />
+            </div>
+          ))}
         </div>
 
-        <div className="mt-16 text-center max-w-3xl mx-auto">
-          <img
-            src={hotmart.url}
-            alt="Hotmart"
-            loading="lazy"
-            className="mx-auto h-10 md:h-12 w-auto"
-          />
-          <h3 className="mt-4 text-xl md:text-2xl font-semibold">Experts que lançamos na Hotmart</h3>
+        <div className="mt-20 text-center max-w-3xl mx-auto">
+          <h3 className="text-[22px] md:text-[28px]">Experts que lançamos na Hotmart</h3>
           <p className="mt-3 text-muted-foreground">
             Em sociedade e coprodução, criamos e gerenciamos a estratégia de marketing e vendas de grandes nomes:
           </p>
         </div>
-        <img
-          src={authorities}
-          loading="lazy"
-          alt="Márcio Atalla, Caio Castro, Cris Arcangeli, Mariana Saad, Samuel Procópio e Dr. Bactéria"
-          className="mt-8 w-full rounded-2xl"
-        />
-      </Section>
-
-      {/* 3. CASE NOVE */}
-      <Section className="bg-card/30" ctaLabel="Quero um resultado assim na minha empresa">
-        <div className="text-center max-w-3xl mx-auto">
-          <span className="inline-block rounded-full bg-cta/15 border border-cta/40 px-4 py-1.5 text-xs font-bold tracking-[0.2em] text-cta-glow uppercase">
-            Case de lançamento
-          </span>
-          <h2 className="mt-5 text-3xl md:text-5xl font-bold leading-[1.08]">
-            29 máquinas agrícolas vendidas em <span className="bg-gradient-primary bg-clip-text text-transparent">48 horas</span>
-          </h2>
-          <p className="mt-5 text-lg text-muted-foreground leading-relaxed">
-            A Nove Máquinas Agrícolas queria vender máquinas de alto valor em um formato que o agro ainda pouco usa: um lançamento digital. Estruturamos o funil completo, 15 dias de captação de leads e uma janela de vendas de 48 horas. Saíram tratores, plantadeiras e colheitadeiras.
-          </p>
-        </div>
-        <div className="mt-10 grid grid-cols-2 md:grid-cols-5 gap-4">
-          {[
-            ["R$ 40 mil", "investidos em tráfego pago"],
-            ["15 dias", "de captação"],
-            ["48 horas", "de vendas"],
-            ["29", "máquinas vendidas"],
-            ["R$ 12 mi", "faturados"],
-          ].map(([n, l], i) => (
-            <div
-              key={l}
-              className={`rounded-2xl border p-6 text-center ${
-                i === 4 ? "col-span-2 md:col-span-1 border-cta/50 bg-cta/10 shadow-cta" : "border-border bg-gradient-card"
-              }`}
-            >
-              <div className={`text-3xl md:text-4xl font-bold ${i === 4 ? "text-cta-glow" : "bg-gradient-primary bg-clip-text text-transparent"}`}>{n}</div>
-              <div className="mt-2 text-sm text-muted-foreground">{l}</div>
-            </div>
+        <div className="mt-8 -mx-5 px-5 md:mx-0 md:px-0 flex md:grid md:grid-cols-6 gap-4 overflow-x-auto snap-x snap-mandatory md:overflow-visible pb-2">
+          {experts.map((e) => (
+            <figure key={e.name} className="snap-start shrink-0 w-[42%] sm:w-[30%] md:w-auto">
+              <img src={e.src} alt={e.name} loading="lazy" className="w-full aspect-[4/5] object-cover object-top rounded-2xl border border-border" />
+              <figcaption className="mt-3 text-base font-medium text-foreground text-center">{e.name}</figcaption>
+            </figure>
           ))}
         </div>
-        <p className="mt-10 text-center text-xl md:text-2xl font-semibold">
-          Cada R$ 1 investido em mídia voltou <span className="text-cta-glow">R$ 300 em vendas.</span>
-        </p>
       </Section>
 
-      {/* 4. PROBLEMA */}
+      {/* CASE NOVE */}
+      <section data-reveal className="py-16 md:py-24 px-5 md:px-6 bg-navy text-navy-foreground">
+        <div className="mx-auto max-w-[1200px]">
+          <div className="text-center max-w-3xl mx-auto">
+            <span className="inline-block rounded-full bg-navy-foreground/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-navy-foreground">
+              Case de lançamento
+            </span>
+            <h2 className="mt-4 text-[26px] md:text-[36px] leading-tight">29 máquinas agrícolas vendidas em 48 horas</h2>
+            <p className="mt-4 text-navy-foreground/75">
+              A Nove Máquinas Agrícolas queria vender máquinas de alto valor em um formato que o agro ainda pouco usa: um lançamento digital. Estruturamos o funil completo, 15 dias de captação de leads e uma janela de vendas de 48 horas. Saíram tratores, plantadeiras e colheitadeiras.
+            </p>
+          </div>
+          <div className="mt-10 grid grid-cols-2 md:grid-cols-5 gap-3 md:gap-4">
+            {[
+              ["R$ 40 mil", "investidos em tráfego pago"],
+              ["15 dias", "de captação"],
+              ["48 horas", "de vendas"],
+              ["29", "máquinas vendidas"],
+              ["R$ 12 mi", "faturados"],
+            ].map(([n, l], i) => (
+              <div key={l} className={`rounded-2xl border border-navy-foreground/12 bg-navy-foreground/6 p-5 md:p-6 text-center ${i === 4 ? "col-span-2 md:col-span-1" : ""}`}>
+                <div className={`text-2xl md:text-3xl font-bold ${i === 4 ? "text-cta" : ""}`} style={{ fontFamily: "var(--font-display)" }}>{n}</div>
+                <div className="mt-1 text-sm text-navy-foreground/70">{l}</div>
+              </div>
+            ))}
+          </div>
+          <p className="mt-10 text-center text-xl md:text-2xl font-semibold">
+            Cada R$ 1 investido em mídia voltou <span className="text-cta">R$ 300 em vendas.</span>
+          </p>
+          <div className="mt-8 text-center"><CTAButton label="Quero um resultado assim" /></div>
+        </div>
+      </section>
+
+      {/* PROBLEMA */}
       <Section
         eyebrow="O problema"
         title="O que está limitando o crescimento da sua empresa"
         intro="Na maioria das empresas que chegam até a Omnia, o produto é bom, o mercado existe e o time é competente. O que trava o crescimento é a forma como os clientes chegam e como eles são convertidos."
+        cta
       >
-        <div className="grid md:grid-cols-2 gap-6">
-          <div className="rounded-2xl border border-border bg-gradient-card p-8 shadow-card-elevated">
-            <h3 className="text-lg font-semibold mb-5 text-destructive">Todos os meses, empresas perdem oportunidades porque:</h3>
+        <div className="grid md:grid-cols-2 gap-5">
+          <div className={`${card} p-7 md:p-8`}>
+            <h3 className="text-lg mb-5">Todos os meses, empresas perdem oportunidades porque:</h3>
             <CrossList items={["Dependem de indicação", "Não têm um funil estruturado", "Não usam o CRM direito", "Não acompanham indicadores", "Não têm previsibilidade de vendas", "Não usam IA para ganhar produtividade"]} />
           </div>
-          <div className="rounded-2xl border border-primary/30 bg-gradient-card p-8 shadow-glow">
-            <h3 className="text-lg font-semibold mb-5 text-primary-glow">Enquanto isso, os concorrentes mais estruturados:</h3>
+          <div className={`${card} p-7 md:p-8`}>
+            <h3 className="text-lg mb-5">Enquanto isso, os concorrentes mais estruturados:</h3>
             <CheckList items={["Crescem com previsibilidade todos os meses", "Têm o pipeline cheio de oportunidades qualificadas", "Convertem mais com menos investimento em mídia", "Tomam decisões com dados em tempo real", "Usam IA para acelerar todo o comercial", "Escalam sem depender de indicação"]} />
           </div>
         </div>
       </Section>
 
-      {/* 5. PROPOSTA */}
+      {/* PROPOSTA */}
       <Section
         eyebrow="Proposta única de valor"
         title="Nosso trabalho é medido pelo que entra no caixa"
         intro="Curtidas, alcance e seguidores ficam em segundo plano. A Omnia trabalha nos indicadores que mexem no faturamento:"
-        className="bg-card/30"
+        className="bg-secondary"
       >
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {metrics.map(([m, d]) => (
-            <div key={m} className="rounded-xl border border-border bg-gradient-card p-6">
-              <div className="text-2xl font-bold bg-gradient-primary bg-clip-text text-transparent">{m}</div>
-              <div className="mt-2 text-sm text-muted-foreground">{d}</div>
-            </div>
-          ))}
-        </div>
-        <p className="mt-10 text-center text-xl font-medium">
-          Nosso objetivo é simples: <span className="text-primary-glow">fazer sua empresa vender mais, com previsibilidade.</span>
-        </p>
-      </Section>
-
-      {/* 6. ENTREGAS */}
-      <Section eyebrow="O que entregamos" title="Tudo que sua operação comercial precisa para escalar">
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          {services.map(({ icon: Icon, title, desc }) => (
-            <div key={title} className="rounded-2xl border border-border bg-gradient-card p-6 hover:border-primary/40 transition-colors">
-              <div className="h-11 w-11 rounded-lg bg-gradient-primary flex items-center justify-center">
-                <Icon className="h-5 w-5 text-primary-foreground" />
-              </div>
-              <h3 className="mt-5 text-lg font-semibold">{title}</h3>
-              <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{desc}</p>
+        <div className="grid md:grid-cols-3 gap-4">
+          {metrics.map(({ icon, t, d }) => (
+            <div key={t} className={`${card} p-6`}>
+              <IconBox icon={icon} />
+              <h3 className="mt-4 text-lg">{t}</h3>
+              <p className="mt-1 text-sm text-muted-foreground">{d}</p>
             </div>
           ))}
         </div>
       </Section>
 
-      {/* 7. IA */}
-      <Section
-        eyebrow="IA aplicada ao crescimento"
-        title="Transformamos Inteligência Artificial em faturamento previsível"
-        intro="Muita empresa ainda usa IA só para escrever textos e posts. Na Omnia, a IA trabalha dentro do funil e do comercial:"
-        className="bg-card/30"
-      >
-        <div className="max-w-3xl mx-auto grid sm:grid-cols-2 gap-x-12 gap-y-3">
-          <CheckList items={["Qualificar leads", "Automatizar processos", "Reduzir retrabalho", "Melhorar campanhas"]} />
-          <CheckList items={["Aumentar conversão", "Gerar insights estratégicos", "Acelerar a tomada de decisão", "Escalar com eficiência"]} />
-        </div>
-      </Section>
-
-      {/* 8. RESULTADOS */}
-      <Section eyebrow="Resultados reais" title="Mais de uma década gerando crescimento">
-        <div className="grid grid-cols-3 gap-4 mb-10">
-          {[["R$ 1 Bi+", "gerados em vendas"], ["342", "empresas atendidas"], ["13 anos", "de mercado"]].map(([n, l]) => (
-            <div key={l} className="rounded-2xl border border-border bg-gradient-card p-5 md:p-8 text-center">
-              <div className="text-2xl md:text-5xl font-bold bg-gradient-primary bg-clip-text text-transparent">{n}</div>
-              <div className="mt-2 text-xs md:text-base text-muted-foreground">{l}</div>
+      {/* ENTREGAS */}
+      <Section eyebrow="O que entregamos" title="Tudo que sua operação comercial precisa para escalar" cta>
+        <div className="grid md:grid-cols-3 gap-4">
+          {services.map(({ icon, title, desc }) => (
+            <div key={title} className={`${card} p-6`}>
+              <IconBox icon={icon} />
+              <h3 className="mt-4 text-lg">{title}</h3>
+              <p className="mt-1 text-sm text-muted-foreground">{desc}</p>
             </div>
           ))}
         </div>
-        <div className="overflow-x-auto rounded-2xl border border-border bg-surface-elevated">
-          <table className="w-full min-w-[640px] text-sm">
-            <thead>
-              <tr className="text-left text-muted-foreground border-b border-border">
+      </Section>
+
+      {/* IA */}
+      <Section eyebrow="IA aplicada ao crescimento" title="Transformamos Inteligência Artificial em faturamento previsível" className="bg-secondary">
+        <div className="grid md:grid-cols-2 gap-10 items-center">
+          <div>
+            <p className="text-muted-foreground mb-6">
+              Muita empresa ainda usa IA só para escrever textos e posts. Na Omnia, a IA trabalha dentro do funil e do comercial:
+            </p>
+            <div className="grid sm:grid-cols-2 gap-x-8 gap-y-3">
+              <CheckList items={["Qualificar leads", "Automatizar processos", "Reduzir retrabalho", "Melhorar campanhas"]} />
+              <CheckList items={["Aumentar conversão", "Gerar insights estratégicos", "Acelerar a tomada de decisão", "Escalar com eficiência"]} />
+            </div>
+          </div>
+          <DashboardMock />
+        </div>
+      </Section>
+
+      {/* RESULTADOS */}
+      <Section eyebrow="Resultados reais" title="Mais de uma década gerando crescimento" cta>
+        <div className={`hidden md:block overflow-hidden ${card}`}>
+          <table className="w-full text-sm">
+            <thead className="bg-secondary">
+              <tr className="text-left text-muted-foreground">
                 {["Cliente", "Leads", "Vendas", "Investimento", "Faturamento"].map((h) => (
-                  <th key={h} className="px-5 py-4 font-semibold uppercase tracking-wider text-xs">{h}</th>
+                  <th key={h} className="px-5 py-3.5 font-semibold uppercase tracking-wider text-xs">{h}</th>
                 ))}
               </tr>
             </thead>
             <tbody>
-              {cases.map((r) => (
-                <tr key={r[0]} className="border-b border-border/60 last:border-0">
+              {cases.map((r, i) => (
+                <tr key={r[0]} className={`border-t border-border ${i % 2 ? "bg-secondary/60" : ""}`}>
                   <td className="px-5 py-4 font-medium">{r[0]}</td>
                   <td className="px-5 py-4">{r[1]}</td>
                   <td className="px-5 py-4">{r[2]}</td>
                   <td className="px-5 py-4 text-muted-foreground">{r[3]}</td>
-                  <td className="px-5 py-4 font-bold text-cta-glow">{r[4]}</td>
+                  <td className="px-5 py-4 font-semibold text-cta">{r[4]}</td>
                 </tr>
               ))}
             </tbody>
           </table>
         </div>
-        <h3 className="mt-14 text-center text-xl font-semibold">Segmentos onde já geramos resultados</h3>
-        <div className="mt-6 flex flex-wrap justify-center gap-3">
-          {segments.map((s) => (
-            <span key={s} className="rounded-full border border-border bg-card/60 px-5 py-2.5 text-sm text-foreground/90">{s}</span>
+        <div className="md:hidden space-y-3">
+          {cases.map((r) => (
+            <div key={r[0]} className={`${card} p-5`}>
+              <div className="font-semibold">{r[0]}</div>
+              <dl className="mt-3 grid grid-cols-2 gap-3 text-sm">
+                {[["Leads", r[1]], ["Vendas", r[2]], ["Investimento", r[3]], ["Faturamento", r[4]]].map(([k, val]) => (
+                  <div key={k}>
+                    <dt className="text-xs text-muted-foreground">{k}</dt>
+                    <dd className={k === "Faturamento" ? "font-semibold text-cta" : ""}>{val}</dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
           ))}
         </div>
-        <p className="mt-8 text-center text-muted-foreground">
-          Cada mercado tem suas particularidades. Todos precisam de <span className="text-foreground font-medium">vendas previsíveis</span>.
-        </p>
+        <h3 className="mt-14 text-center text-xl">Segmentos onde já geramos resultados</h3>
+        <div className="mt-6 flex flex-wrap justify-center gap-2">
+          {segments.map((s) => (
+            <span key={s} className="rounded-full bg-secondary border border-border px-4 py-2 text-sm text-foreground">{s}</span>
+          ))}
+        </div>
       </Section>
 
-      {/* 9. PARA QUEM */}
-      <Section eyebrow="Para quem é" title="Empresas que querem crescer com previsibilidade" className="bg-card/30">
+      {/* PARA QUEM */}
+      <Section eyebrow="Para quem é" title="Empresas que querem crescer com previsibilidade" className="bg-secondary">
         <div className="grid md:grid-cols-2 gap-8 items-center max-w-5xl mx-auto">
           <CheckList items={["Faturam acima de R$ 200 mil por mês", "Têm produto ou serviço validado", "Querem escalar", "Buscam previsibilidade", "Entendem marketing como investimento", "Querem estruturar vendas de forma profissional"]} />
-          <div className="rounded-2xl border border-primary/30 bg-gradient-card p-8 shadow-glow">
-            <p className="text-foreground/90 leading-relaxed">
-              Também avaliamos empresas <span className="text-primary-glow font-semibold">acima de R$ 100 mil por mês</span> com forte potencial de crescimento e mentalidade de expansão.
+          <div className={`${card} p-8`}>
+            <p className="text-foreground">
+              Também avaliamos empresas <span className="text-primary font-semibold">acima de R$ 100 mil por mês</span> com forte potencial de crescimento e mentalidade de expansão.
             </p>
           </div>
         </div>
       </Section>
 
-      {/* 10. COMO FUNCIONA */}
+      {/* COMO FUNCIONA */}
       <Section eyebrow="Como funciona" title="Um método em 6 etapas">
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <ol className="relative grid gap-6 md:grid-cols-6 md:gap-4">
+          <span aria-hidden className="hidden md:block absolute top-5 left-[8%] right-[8%] h-px bg-border" />
+          <span aria-hidden className="md:hidden absolute top-2 bottom-2 left-5 w-px bg-border" />
           {steps.map(([n, t, d]) => (
-            <div key={n} className="rounded-2xl border border-border bg-gradient-card p-6">
-              <div className="text-4xl font-bold bg-gradient-primary bg-clip-text text-transparent">{n}</div>
-              <h3 className="mt-3 text-lg font-semibold">{t}</h3>
-              <p className="mt-2 text-sm text-muted-foreground">{d}</p>
-            </div>
+            <li key={n} className="relative flex md:flex-col md:items-center md:text-center gap-4 md:gap-3">
+              <span className="relative z-10 h-10 w-10 shrink-0 rounded-full bg-primary text-primary-foreground text-sm font-bold flex items-center justify-center">{n}</span>
+              <div>
+                <h3 className="text-base">{t}</h3>
+                <p className="mt-1 text-sm text-muted-foreground">{d}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </Section>
+
+      {/* COMPARAÇÃO + BENEFÍCIOS */}
+      <Section eyebrow="Por que a Omnia" title="Agências tradicionais x Omnia" className="bg-secondary">
+        <div className="grid grid-cols-2 gap-3 md:gap-5 max-w-4xl mx-auto">
+          <div className={`${card} p-5 md:p-8`}>
+            <h3 className="text-base md:text-xl mb-5 text-muted-foreground">Agências tradicionais</h3>
+            <CrossList items={comparison.map((c) => c[0])} />
+          </div>
+          <div className="rounded-2xl border-2 border-primary bg-card p-5 md:p-8 shadow-soft">
+            <h3 className="text-base md:text-xl mb-5 text-primary">Omnia</h3>
+            <CheckList items={comparison.map((c) => c[1])} />
+          </div>
+        </div>
+        <h3 className="mt-14 text-center text-xl">O que muda na sua empresa</h3>
+        <div className="mt-6 flex flex-wrap justify-center gap-2">
+          {benefits.map((b) => (
+            <span key={b} className="inline-flex items-center gap-1.5 rounded-full bg-card border border-border px-4 py-2 text-sm">
+              <Check className="h-4 w-4 text-primary" strokeWidth={2} /> {b}
+            </span>
           ))}
         </div>
       </Section>
 
-      {/* 11. POR QUE */}
-      <Section eyebrow="Por que a Omnia" title="Agências tradicionais x Omnia" className="bg-card/30">
-        <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
-          <div className="rounded-2xl border border-border bg-card/40 p-8">
-            <h3 className="text-xl font-semibold mb-5 text-muted-foreground">Agências tradicionais</h3>
-            <CrossList items={["Foco em posts", "Foco em seguidores", "Foco em alcance", "Métricas de vaidade"]} />
-          </div>
-          <div className="rounded-2xl border border-primary/40 bg-gradient-card p-8 shadow-glow">
-            <h3 className="text-xl font-semibold mb-5 text-primary-glow">Omnia</h3>
-            <CheckList items={["Foco em vendas e crescimento", "Foco em indicadores e previsibilidade", "IA aplicada ao negócio", "CRM e comercial integrados", "Estratégia orientada por receita"]} />
-          </div>
-        </div>
-      </Section>
-
-      {/* 12. O QUE MUDA */}
-      <Section eyebrow="Benefícios" title="O que muda na sua empresa">
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {["Mais clientes", "Mais oportunidades", "Mais vendas", "Mais previsibilidade", "Mais produtividade", "Mais controle de indicadores", "Menos desperdício de mídia", "Menos dependência de indicação"].map((b) => (
-            <div key={b} className="rounded-xl border border-border bg-gradient-card p-5 flex items-center gap-3">
-              <Check className="h-5 w-5 shrink-0 text-primary-glow" strokeWidth={3} />
-              <span className="text-foreground/90">{b}</span>
-            </div>
-          ))}
-        </div>
-      </Section>
-
-      {/* 13. FAQ */}
-      <Section eyebrow="FAQ" title="Perguntas frequentes" className="bg-card/30">
-        <Accordion type="single" collapsible className="max-w-3xl mx-auto rounded-2xl border border-border/60 bg-surface-elevated shadow-elevated divide-y divide-border/60 overflow-hidden">
+      {/* FAQ */}
+      <Section eyebrow="FAQ" title="Perguntas frequentes">
+        <Accordion type="single" collapsible className="max-w-3xl mx-auto">
           {faqs.map((f, i) => (
-            <AccordionItem key={i} value={`item-${i}`} className="border-0 px-6">
-              <AccordionTrigger className="text-left text-base hover:no-underline py-5">{f.q}</AccordionTrigger>
+            <AccordionItem key={i} value={`item-${i}`} className="border-b border-border">
+              <AccordionTrigger className="text-left text-base font-semibold hover:no-underline py-5">{f.q}</AccordionTrigger>
               <AccordionContent className="text-muted-foreground pb-5 text-base">{f.a}</AccordionContent>
             </AccordionItem>
           ))}
         </Accordion>
       </Section>
 
-      {/* 14. CTA FINAL */}
-      <section className="relative py-24 px-6 bg-hero">
-        <div className="relative mx-auto max-w-3xl text-center">
-          <h2 className="text-3xl md:text-5xl font-bold leading-[1.08]">
-            Vamos colocar <span className="bg-gradient-primary bg-clip-text text-transparent">inteligência</span> no seu faturamento?
+      {/* CTA FINAL */}
+      <section data-reveal className="pb-16 md:pb-24 px-5 md:px-6">
+        <div className="mx-auto max-w-[1200px] rounded-2xl bg-primary-soft px-6 py-12 md:py-16 text-center">
+          <h2 className="text-[26px] md:text-[36px] leading-tight max-w-3xl mx-auto">
+            Vamos colocar <span className="text-primary">inteligência</span> no seu faturamento?
           </h2>
-          <p className="mt-6 text-lg text-muted-foreground">
+          <p className="mt-4 max-w-2xl mx-auto text-muted-foreground">
             Solicite uma análise estratégica e descubra como a Omnia pode estruturar um sistema previsível de crescimento para o seu negócio.
           </p>
-          <div className="mt-10"><CTAButton /></div>
+          <div className="mt-8"><CTAButton /></div>
         </div>
       </section>
 
       {/* FOOTER */}
-      <footer className="border-t border-border bg-card/40 px-6 pt-14 pb-28 md:pb-14">
-        <div className="mx-auto max-w-6xl grid md:grid-cols-[1.4fr_1fr_1fr] gap-10">
+      <footer className="border-t border-border bg-secondary px-5 md:px-6 pt-14 pb-28 md:pb-14">
+        <div className="mx-auto max-w-[1200px] grid md:grid-cols-[1.4fr_1fr_1fr] gap-10">
           <div>
-            <img src={logo} alt="Omnia" loading="lazy" className="h-24 w-auto" />
+            <div className="text-[32px] font-bold lowercase tracking-tight leading-none" style={{ fontFamily: "var(--font-display)" }}>omnia</div>
+            <div className="mt-1 text-xs uppercase tracking-[0.2em] text-muted-foreground">Inteligência Digital</div>
             <p className="mt-4 text-sm text-muted-foreground">Funis de Vendas • Inteligência Artificial • Growth Marketing</p>
-            <p className="mt-3 text-sm text-primary-glow font-medium">Onde Inteligência Vira Faturamento.</p>
+            <p className="mt-2 text-sm text-primary font-medium">Onde Inteligência Vira Faturamento.</p>
           </div>
           <div className="text-sm text-muted-foreground space-y-3">
-            <h4 className="text-foreground font-semibold mb-2">Contato</h4>
+            <h4 className="text-foreground text-base mb-2">Contato</h4>
             <p className="flex items-center gap-2"><Phone className="h-4 w-4" /><span>(11) 99897-8018</span></p>
             <p className="flex items-center gap-2"><Mail className="h-4 w-4" /><span>thiago@omniadigital.com.br</span></p>
           </div>
           <div className="text-sm text-muted-foreground">
-            <h4 className="text-foreground font-semibold mb-2">Endereço</h4>
+            <h4 className="text-foreground text-base mb-2">Endereço</h4>
             <p className="flex items-start gap-2">
               <MapPin className="h-4 w-4 mt-0.5 shrink-0" />
               <span>The Square Open Mall, Bloco E, Sala 605, Rodovia Raposo Tavares, km 22 — Lageadinho, Cotia/SP, CEP 06709-015</span>
             </p>
           </div>
         </div>
-        <div id="privacidade" className="mx-auto max-w-6xl mt-10 pt-6 border-t border-border text-xs text-muted-foreground flex flex-col md:flex-row items-center justify-between gap-3">
+        <div id="privacidade" className="mx-auto max-w-[1200px] mt-10 pt-6 border-t border-border text-xs text-muted-foreground flex flex-col md:flex-row items-center justify-between gap-3">
           <span>© 2026 Omnia Inteligência Digital. Todos os direitos reservados.</span>
           <a href="#privacidade" className="underline hover:text-foreground">Política de privacidade</a>
         </div>
@@ -703,40 +752,69 @@ export function LandingPage() {
 
       {/* STICKY MOBILE CTA */}
       <div
-        className={`fixed bottom-0 inset-x-0 z-50 p-3 bg-background/90 backdrop-blur border-t border-border lg:hidden transition-transform duration-300 ${
+        className={`fixed bottom-0 inset-x-0 z-50 p-3 bg-background border-t border-border md:hidden transition-transform duration-300 ${
           showSticky ? "translate-y-0" : "translate-y-full"
         }`}
       >
         <a
           href="#formulario"
-          className="flex w-full items-center justify-center gap-2 rounded-md bg-gradient-cta py-4 text-sm font-bold uppercase text-cta-foreground shadow-cta animate-pulse-cta"
+          className="flex w-full h-[52px] items-center justify-center gap-2 rounded-[10px] bg-cta hover:bg-cta-hover text-sm font-bold uppercase text-cta-foreground"
         >
-          Quero análise estratégica <ArrowRight className="h-4 w-4" />
+          {CTA_LABEL} <ArrowRight className="h-4 w-4" />
         </a>
       </div>
     </div>
   );
 }
 
+function DashboardMock() {
+  const bars = [38, 52, 46, 64, 72, 88];
+  return (
+    <div className={`${card} p-6`} aria-hidden>
+      <div className="flex items-center justify-between">
+        <div>
+          <div className="text-xs text-muted-foreground">Receita do funil</div>
+          <div className="text-2xl font-bold" style={{ fontFamily: "var(--font-display)" }}>R$ 1,08 mi</div>
+        </div>
+        <span className="rounded-full bg-primary-soft px-2.5 py-1 text-xs font-semibold text-primary">+212%</span>
+      </div>
+      <div className="mt-6 flex items-end gap-3 h-36">
+        {bars.map((h, i) => (
+          <div key={i} className={`flex-1 rounded-md ${i === bars.length - 1 ? "bg-primary" : "bg-primary-soft"}`} style={{ height: `${h}%` }} />
+        ))}
+      </div>
+      <div className="mt-6 grid grid-cols-3 gap-3 text-center">
+        {[["865", "Leads"], ["51", "Vendas"], ["5,9%", "Conversão"]].map(([n, l]) => (
+          <div key={l} className="rounded-lg bg-secondary py-3">
+            <div className="font-semibold">{n}</div>
+            <div className="text-xs text-muted-foreground">{l}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function Field({
-  id, label, placeholder, value, onChange, error, type = "text", autoComplete,
+  id, label, placeholder, value, onChange, onBlur, error, type = "text", autoComplete,
 }: {
   id: string; label: string; placeholder: string; value: string;
-  onChange: (v: string) => void; error?: string; type?: string; autoComplete?: string;
+  onChange: (v: string) => void; onBlur?: () => void; error?: string; type?: string; autoComplete?: string;
 }) {
   return (
     <div className="space-y-1.5">
-      <Label htmlFor={id} className="text-foreground/90">{label}</Label>
+      <Label htmlFor={id} className="text-sm font-medium text-foreground">{label}</Label>
       <Input
         id={id}
         type={type}
         value={value}
         autoComplete={autoComplete}
         onChange={(e) => onChange(e.target.value)}
+        onBlur={onBlur}
         placeholder={placeholder}
         aria-invalid={!!error}
         aria-describedby={error ? `${id}-err` : undefined}
-        className={`bg-background/70 h-12 ${error ? "border-destructive" : "border-border/80"} focus-visible:border-primary/60 focus-visible:ring-primary/30`}
+        className={`h-12 rounded-[10px] bg-card text-base md:text-sm ${error ? "border-destructive" : "border-input"} focus-visible:border-primary focus-visible:ring-[3px] focus-visible:ring-primary/15`}
       />
       {error && <p id={`${id}-err`} className="text-xs text-destructive">{error}</p>}
     </div>
