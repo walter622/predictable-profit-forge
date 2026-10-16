@@ -367,7 +367,7 @@ function VSL() {
         aria-label="Assistir vídeo"
         className="group relative block w-full aspect-[9/16] max-h-[70vh] md:max-h-none rounded-[20px] overflow-hidden bg-navy"
       >
-        <img src={thiago} alt="Thiago Batizeli, fundador da Omnia" className="absolute inset-0 h-full w-full object-cover" />
+        <img src={thiago} alt="Thiago Batizeli, fundador da Omnia" className="absolute inset-0 h-full w-full object-cover object-[78%_center]" />
         <span className="absolute inset-0 bg-navy/25" />
         <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-16 w-16 rounded-full bg-card flex items-center justify-center transition-transform group-hover:scale-105">
           <Play className="h-6 w-6 ml-1 text-foreground" fill="currentColor" />
@@ -440,7 +440,7 @@ export function LandingPage() {
               <span className="text-primary">Funil de Vendas + IA</span>
             </h1>
             <p className="mt-3 mx-auto max-w-[720px] text-base md:text-lg text-muted-foreground">
-              Estruturamos funis de vendas, CRM, tráfego pago e processos comerciais para gerar mais clientes, mais vendas e mais lucro todos os meses.
+              Assista ao vídeo abaixo e entenda como funciona a nossa estratégia e metodologia.
             </p>
           </div>
 
