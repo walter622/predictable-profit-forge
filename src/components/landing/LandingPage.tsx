@@ -2,6 +2,34 @@ import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "@tanstack/react-router";
 import logo from "@/assets/omnia-logo.png";
 import authorities from "@/assets/authority-faces.png";
+import hotmart from "@/assets/hotmart.webp.asset.json";
+import clientA9 from "@/assets/a9-maquinas.png.asset.json";
+import clientCiao from "@/assets/ciao-logo.webp.asset.json";
+import clientSpirit from "@/assets/spirit-ventiladores.jpeg.asset.json";
+import clientMsBrazil from "@/assets/ms-brazil.png.asset.json";
+import clientMjHome from "@/assets/mj-home.jpeg.asset.json";
+import clientMeruoca from "@/assets/meruoca.jpeg.asset.json";
+import clientLuna from "@/assets/luna-e-cafe.jpeg.asset.json";
+import clientNextt from "@/assets/nextt-house.webp.asset.json";
+import clientCampevo from "@/assets/campevo.webp.asset.json";
+import clientAtoba from "@/assets/atoba.jpg.asset.json";
+import clientVersollato from "@/assets/clinica-versollato.webp.asset.json";
+import clientFormaq from "@/assets/formaq.jpeg.asset.json";
+
+const clientLogos = [
+  { src: clientA9.url, alt: "A9 Máquinas Agrícolas" },
+  { src: clientCiao.url, alt: "Ciao" },
+  { src: clientSpirit.url, alt: "Spirit Ventiladores" },
+  { src: clientMsBrazil.url, alt: "MS Brazil" },
+  { src: clientMjHome.url, alt: "MJ Home" },
+  { src: clientMeruoca.url, alt: "Meruoca" },
+  { src: clientLuna.url, alt: "Luna e Café" },
+  { src: clientNextt.url, alt: "Nextt House" },
+  { src: clientCampevo.url, alt: "Campevo" },
+  { src: clientAtoba.url, alt: "Átoba" },
+  { src: clientVersollato.url, alt: "Clínica Versollato" },
+  { src: clientFormaq.url, alt: "Formaq" },
+];
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -384,8 +412,33 @@ export function LandingPage() {
 
       {/* 2. AUTORIDADE */}
       <Section eyebrow="Autoridade" title="Quem já cresce com a Omnia">
-        <div className="text-center max-w-3xl mx-auto">
-          <h3 className="text-xl md:text-2xl font-semibold">Experts que lançamos na Hotmart</h3>
+        <div className="text-center">
+          <h3 className="text-xl md:text-2xl font-semibold">Empresas que confiam na Omnia</h3>
+          <div className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-4">
+            {clientLogos.map((c) => (
+              <div
+                key={c.alt}
+                className="rounded-xl border border-border bg-card/60 px-4 py-6 flex items-center justify-center"
+              >
+                <img
+                  src={c.src}
+                  alt={c.alt}
+                  loading="lazy"
+                  className="max-h-16 w-auto max-w-full object-contain"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="mt-16 text-center max-w-3xl mx-auto">
+          <img
+            src={hotmart.url}
+            alt="Hotmart"
+            loading="lazy"
+            className="mx-auto h-10 md:h-12 w-auto"
+          />
+          <h3 className="mt-4 text-xl md:text-2xl font-semibold">Experts que lançamos na Hotmart</h3>
           <p className="mt-3 text-muted-foreground">
             Em sociedade e coprodução, criamos e gerenciamos a estratégia de marketing e vendas de grandes nomes:
           </p>
@@ -396,16 +449,6 @@ export function LandingPage() {
           alt="Márcio Atalla, Caio Castro, Cris Arcangeli, Mariana Saad, Samuel Procópio e Dr. Bactéria"
           className="mt-8 w-full rounded-2xl"
         />
-        <div className="mt-16 text-center">
-          <h3 className="text-xl md:text-2xl font-semibold">Empresas que confiam na Omnia</h3>
-          <div className="mt-6 grid grid-cols-2 md:grid-cols-4 gap-4">
-            {["Nove Máquinas Agrícolas", "MJ Home", "Flyer Consulting", "Gram Vacinas"].map((c) => (
-              <div key={c} className="rounded-xl border border-border bg-card/60 px-4 py-6 font-semibold text-foreground/85">
-                {c}
-              </div>
-            ))}
-          </div>
-        </div>
       </Section>
 
       {/* 3. CASE NOVE */}
