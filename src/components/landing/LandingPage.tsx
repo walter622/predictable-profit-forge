@@ -440,7 +440,7 @@ export function LandingPage() {
               <span className="text-primary">Funil de Vendas + IA</span>
             </h1>
             <p className="mt-3 mx-auto max-w-[720px] text-base md:text-lg text-muted-foreground">
-              Estruturamos funis de vendas, CRM, tráfego pago e processos comerciais para gerar mais clientes, mais vendas e mais lucro todos os meses.
+              Assista ao vídeo abaixo e entenda como funciona a nossa estratégia e metodologia.
             </p>
           </div>
 
