@@ -367,7 +367,7 @@ function VSL() {
         aria-label="Assistir vídeo"
         className="group relative block w-full aspect-[9/16] max-h-[70vh] md:max-h-none rounded-[20px] overflow-hidden bg-navy"
       >
-        <img src={thiago} alt="Thiago Batizeli, fundador da Omnia" className="absolute inset-0 h-full w-full object-cover" />
+        <img src={thiago} alt="Thiago Batizeli, fundador da Omnia" className="absolute inset-0 h-full w-full object-cover object-[78%_center]" />
         <span className="absolute inset-0 bg-navy/25" />
         <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-16 w-16 rounded-full bg-card flex items-center justify-center transition-transform group-hover:scale-105">
           <Play className="h-6 w-6 ml-1 text-foreground" fill="currentColor" />
