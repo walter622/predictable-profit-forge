@@ -419,12 +419,13 @@ export function LandingPage() {
               <div
                 key={c.alt}
                 className="rounded-xl border border-border bg-card/60 px-4 py-6 flex items-center justify-center"
+                style={c.bg ? { backgroundColor: c.bg, borderColor: c.bg } : undefined}
               >
                 <img
                   src={c.src}
                   alt={c.alt}
                   loading="lazy"
-                  className="max-h-16 w-auto max-w-full object-contain"
+                  className={`${c.size} w-auto max-w-full object-contain`}
                 />
               </div>
             ))}
