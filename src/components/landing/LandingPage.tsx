@@ -338,15 +338,15 @@ export function LandingPage() {
             href="#formulario"
             className="hidden sm:inline-flex rounded-md bg-gradient-cta px-5 py-2.5 text-sm font-bold uppercase text-cta-foreground shadow-cta"
           >
-            Análise gratuita
+            Análise estratégica
           </a>
         </div>
       </header>
 
       {/* 1. HERO */}
       <section className="relative pt-28 md:pt-36 pb-16 px-6 bg-hero overflow-hidden">
-        <div className="relative mx-auto max-w-6xl grid lg:grid-cols-[1.15fr_1fr] gap-x-12 gap-y-8 items-start">
-          <div className="order-1 text-center lg:text-left">
+        <div className="relative mx-auto max-w-6xl">
+          <div className="text-center max-w-4xl mx-auto">
             <span className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-xs font-semibold tracking-wider text-primary-glow uppercase">
               <Sparkles className="h-3.5 w-3.5" /> Onde Inteligência Vira Faturamento
             </span>
@@ -354,26 +354,15 @@ export function LandingPage() {
               Como dobrar ou triplicar as vendas da sua empresa com previsibilidade usando{" "}
               <span className="bg-gradient-primary bg-clip-text text-transparent">Funil de Vendas + IA</span>
             </h1>
+            <p className="mt-6 text-lg md:text-xl text-muted-foreground leading-relaxed">
+              Utilizamos a metodologia <strong className="text-foreground">Funil de Vendas Previsível</strong>, que envolve CRM, gestão de tráfego pago, processos comerciais e gestão de CRM, para atrair novos clientes, gerar mais vendas e mais lucro todos os meses. Solicite um diagnóstico estratégico.
+            </p>
           </div>
 
-          <div className="order-2 lg:row-span-3 lg:order-none lg:col-start-2 lg:row-start-1 grid gap-8">
-            <div className="lg:hidden"><VSL /></div>
+          <div className="mt-12 grid lg:grid-cols-[1.3fr_1fr] gap-8 items-center">
+            <div><VSL /></div>
             <div ref={formWrap}><LeadForm /></div>
           </div>
-
-          <div className="order-3 text-center lg:text-left">
-            <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
-              Estruturamos funis de vendas, CRM, tráfego pago e processos comerciais para gerar mais clientes, mais vendas e mais lucro todos os meses.
-            </p>
-            <div className="mt-6 flex flex-wrap justify-center lg:justify-start gap-2">
-              {tags.map((t) => (
-                <span key={t} className="inline-flex items-center gap-1.5 rounded-full border border-border bg-card/60 px-3 py-1.5 text-xs text-foreground/85">
-                  <Check className="h-3.5 w-3.5 text-primary-glow" strokeWidth={3} /> {t}
-                </span>
-              ))}
-            </div>
-          </div>
-          <div className="hidden lg:block order-4"><VSL /></div>
         </div>
       </section>
 
