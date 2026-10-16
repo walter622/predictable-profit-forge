@@ -31,7 +31,7 @@ import {
   Clock,
 } from "lucide-react";
 
-const CTA_LABEL = "Solicitar Análise Estratégica Gratuita";
+const CTA_LABEL = "Quero análise estratégica";
 
 function CTAButton({
   className = "",
@@ -249,7 +249,7 @@ function LeadForm() {
       onSubmit={submit}
       className="scroll-mt-28 rounded-2xl border border-primary/25 bg-surface-elevated p-6 md:p-8 shadow-elevated"
     >
-      <h2 className="text-2xl md:text-3xl font-bold leading-tight">Solicite sua Análise Estratégica Gratuita</h2>
+      <h2 className="text-2xl md:text-3xl font-bold leading-tight">Solicite sua Análise Estratégica</h2>
       <p className="mt-2 text-sm text-muted-foreground">
         Nossa equipe analisa seu marketing, funil, CRM e processo comercial e devolve um plano de ação.
       </p>
@@ -624,7 +624,7 @@ export function LandingPage() {
             Vamos colocar <span className="bg-gradient-primary bg-clip-text text-transparent">inteligência</span> no seu faturamento?
           </h2>
           <p className="mt-6 text-lg text-muted-foreground">
-            Solicite uma análise estratégica gratuita e descubra como a Omnia pode estruturar um sistema previsível de crescimento para o seu negócio.
+            Solicite uma análise estratégica e descubra como a Omnia pode estruturar um sistema previsível de crescimento para o seu negócio.
           </p>
           <div className="mt-10"><CTAButton /></div>
         </div>
@@ -667,7 +667,7 @@ export function LandingPage() {
           href="#formulario"
           className="flex w-full items-center justify-center gap-2 rounded-md bg-gradient-cta py-4 text-sm font-bold uppercase text-cta-foreground shadow-cta animate-pulse-cta"
         >
-          Solicitar análise gratuita <ArrowRight className="h-4 w-4" />
+          Quero análise estratégica <ArrowRight className="h-4 w-4" />
         </a>
       </div>
     </div>
