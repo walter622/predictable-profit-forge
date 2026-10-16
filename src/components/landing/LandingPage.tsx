@@ -9,7 +9,7 @@ import clientSpirit from "@/assets/spirit-ventiladores.jpeg.asset.json";
 import clientMsBrazil from "@/assets/ms-brazil-crop.png.asset.json";
 import clientMjHome from "@/assets/mj-home.jpeg.asset.json";
 import clientMeruoca from "@/assets/meruoca-crop.png.asset.json";
-import clientLuna from "@/assets/luna-e-cafe.jpeg.asset.json";
+import clientLuna from "@/assets/luna-e-cafe-clean.png.asset.json";
 import clientNextt from "@/assets/nextt-house.webp.asset.json";
 import clientCampevo from "@/assets/campevo.webp.asset.json";
 import clientAtoba from "@/assets/atoba.jpg.asset.json";
