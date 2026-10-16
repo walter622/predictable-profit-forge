@@ -77,7 +77,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
+      { title: "Omnia Inteligência Digital" },
       { name: "description", content: "Omnia Growth Engine transforms AI into predictable revenue by structuring sales funnels, CRM, and commercial processes." },
       { name: "author", content: "Lovable" },
       { property: "og:title", content: "Lovable App" },
