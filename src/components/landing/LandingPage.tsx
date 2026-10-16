@@ -19,16 +19,16 @@ import clientFormaq from "@/assets/formaq.jpeg.asset.json";
 const clientLogos = [
   { src: clientA9.url, alt: "A9 Máquinas Agrícolas", bg: "#000000", size: "w-full max-h-24" },
   { src: clientCiao.url, alt: "Ciao", bg: "#FFFFFF", size: "max-h-16 w-auto" },
-  { src: clientSpirit.url, alt: "Spirit Ventiladores", bg: "#E9521D", size: "max-h-28 w-auto" },
-  { src: clientMsBrazil.url, alt: "MS Brazil", bg: "#0A1F44", size: "max-h-28 w-auto" },
-  { src: clientMjHome.url, alt: "MJ Home", bg: "#FFFFFF", size: "max-h-28 w-auto" },
+  { src: clientSpirit.url, alt: "Spirit Ventiladores", bg: "#E9521D", size: "max-h-32 w-auto" },
+  { src: clientMsBrazil.url, alt: "MS Brazil", bg: "#0A1F44", size: "max-h-32 w-auto" },
+  { src: clientMjHome.url, alt: "MJ Home", bg: "#FFFFFF", size: "max-h-32 w-auto" },
   { src: clientMeruoca.url, alt: "Meruoca", bg: "#F3F3F3", size: "w-full max-h-20" },
-  { src: clientLuna.url, alt: "Luna e Café", bg: "#FFFFFF", size: "max-h-28 w-auto" },
+  { src: clientLuna.url, alt: "Luna e Café", bg: "#FFFFFF", size: "max-h-36 w-auto" },
   { src: clientNextt.url, alt: "Nextt House", bg: undefined, size: "max-h-16 w-auto" },
   { src: clientCampevo.url, alt: "Campevo", bg: "#FFFFFF", size: "max-h-16 w-auto" },
-  { src: clientAtoba.url, alt: "Átoba", bg: "#FFFFFF", size: "max-h-24 w-auto" },
-  { src: clientVersollato.url, alt: "Clínica Versollato", bg: "#DFD8D4", size: "max-h-24 w-auto" },
-  { src: clientFormaq.url, alt: "Formaq", bg: "#000000", size: "max-h-28 w-auto" },
+  { src: clientAtoba.url, alt: "Átoba", bg: "#FFFFFF", size: "max-h-28 w-auto" },
+  { src: clientVersollato.url, alt: "Clínica Versollato", bg: "#DFD8D4", size: "max-h-32 w-auto" },
+  { src: clientFormaq.url, alt: "Formaq", bg: "#000000", size: "max-h-36 w-auto" },
 ];
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
