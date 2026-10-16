@@ -17,18 +17,18 @@ import clientVersollato from "@/assets/clinica-versollato.webp.asset.json";
 import clientFormaq from "@/assets/formaq.jpeg.asset.json";
 
 const clientLogos = [
-  { src: clientA9.url, alt: "A9 Máquinas Agrícolas" },
-  { src: clientCiao.url, alt: "Ciao" },
-  { src: clientSpirit.url, alt: "Spirit Ventiladores" },
-  { src: clientMsBrazil.url, alt: "MS Brazil" },
-  { src: clientMjHome.url, alt: "MJ Home" },
-  { src: clientMeruoca.url, alt: "Meruoca" },
-  { src: clientLuna.url, alt: "Luna e Café" },
-  { src: clientNextt.url, alt: "Nextt House" },
-  { src: clientCampevo.url, alt: "Campevo" },
-  { src: clientAtoba.url, alt: "Átoba" },
-  { src: clientVersollato.url, alt: "Clínica Versollato" },
-  { src: clientFormaq.url, alt: "Formaq" },
+  { src: clientA9.url, alt: "A9 Máquinas Agrícolas", bg: "#000000", size: "max-h-24" },
+  { src: clientCiao.url, alt: "Ciao", bg: "#FFFFFF", size: "max-h-16" },
+  { src: clientSpirit.url, alt: "Spirit Ventiladores", bg: "#E9521D", size: "max-h-24" },
+  { src: clientMsBrazil.url, alt: "MS Brazil", bg: "#0A1F44", size: "max-h-24" },
+  { src: clientMjHome.url, alt: "MJ Home", bg: "#EFE6DC", size: "max-h-24" },
+  { src: clientMeruoca.url, alt: "Meruoca", bg: "#F3F3F3", size: "max-h-24" },
+  { src: clientLuna.url, alt: "Luna e Café", bg: "#FFFFFF", size: "max-h-24" },
+  { src: clientNextt.url, alt: "Nextt House", bg: undefined, size: "max-h-16" },
+  { src: clientCampevo.url, alt: "Campevo", bg: "#FFFFFF", size: "max-h-16" },
+  { src: clientAtoba.url, alt: "Átoba", bg: "#FFFFFF", size: "max-h-20" },
+  { src: clientVersollato.url, alt: "Clínica Versollato", bg: "#DFD8D4", size: "max-h-20" },
+  { src: clientFormaq.url, alt: "Formaq", bg: "#000000", size: "max-h-24" },
 ];
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -419,12 +419,13 @@ export function LandingPage() {
               <div
                 key={c.alt}
                 className="rounded-xl border border-border bg-card/60 px-4 py-6 flex items-center justify-center"
+                style={c.bg ? { backgroundColor: c.bg, borderColor: c.bg } : undefined}
               >
                 <img
                   src={c.src}
                   alt={c.alt}
                   loading="lazy"
-                  className="max-h-16 w-auto max-w-full object-contain"
+                  className={`${c.size} w-auto max-w-full object-contain`}
                 />
               </div>
             ))}
