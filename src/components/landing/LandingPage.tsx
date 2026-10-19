@@ -352,9 +352,9 @@ function LeadForm() {
   );
 }
 
-function VSL() {
+function VSL({ width }: { width?: number }) {
   return (
-    <div className="relative w-full shrink-0 md:w-auto md:aspect-[9/16]">
+    <div className="relative w-full shrink-0 md:w-[var(--vsl-w)]" style={{ "--vsl-w": width ? `${width}px` : "300px" } as React.CSSProperties}>
       <button
         type="button"
         aria-label="Assistir vídeo"
@@ -374,6 +374,15 @@ function VSL() {
 export function LandingPage() {
   const formWrap = useRef<HTMLDivElement>(null);
   const [showSticky, setShowSticky] = useState(false);
+  const [vslW, setVslW] = useState<number>();
+
+  useEffect(() => {
+    const el = formWrap.current;
+    if (!el) return;
+    const ro = new ResizeObserver(() => setVslW(Math.round((el.offsetHeight * 9) / 16)));
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, []);
 
   useEffect(() => {
     const el = formWrap.current;
@@ -438,7 +447,7 @@ export function LandingPage() {
           </div>
 
           <div className="mt-5 flex flex-col md:flex-row md:items-stretch md:justify-center gap-8 md:gap-12">
-            <VSL />
+            <VSL width={vslW} />
             <div ref={formWrap} className="w-full md:w-[440px] shrink-0">
               <LeadForm />
             </div>
