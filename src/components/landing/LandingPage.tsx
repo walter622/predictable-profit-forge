@@ -314,7 +314,7 @@ function LeadForm() {
       <p className="mt-1 text-sm text-muted-foreground">
         Analisamos seu marketing, funil, CRM e comercial e devolvemos um plano de ação.
       </p>
-      <div className="mt-4 flex flex-col gap-3">
+      <div className="mt-3 flex flex-col gap-2.5">
         <Field id="nome" label="Nome" placeholder="Seu nome" {...fieldProps("nome")} onChange={(x) => set("nome", x)} autoComplete="name" />
         <Field id="email" label="E-mail" type="email" placeholder="voce@empresa.com" {...fieldProps("email")} onChange={(x) => set("email", x)} autoComplete="email" />
         <Field id="whatsapp" label="WhatsApp" type="tel" placeholder="(00) 00000-0000" {...fieldProps("whatsapp")} onChange={(x) => set("whatsapp", maskPhone(x))} autoComplete="tel" />
@@ -354,11 +354,11 @@ function LeadForm() {
 
 function VSL() {
   return (
-    <div className="w-full md:w-auto shrink-0 flex flex-col">
+    <div className="relative w-full shrink-0 md:w-auto md:aspect-[9/16]">
       <button
         type="button"
         aria-label="Assistir vídeo"
-        className="group relative block w-full aspect-[9/16] max-h-[70vh] md:max-h-none md:h-full md:w-auto rounded-[20px] overflow-hidden bg-navy"
+        className="group relative block w-full aspect-[9/16] max-h-[70vh] md:max-h-none md:absolute md:inset-0 md:h-full md:aspect-auto rounded-[20px] overflow-hidden bg-navy"
       >
         <img src={thiago} alt="Thiago Batizeli, fundador da Omnia" className="absolute inset-0 h-full w-full object-cover object-[78%_center]" />
         <span className="absolute inset-0 bg-navy/25" />
@@ -428,7 +428,7 @@ export function LandingPage() {
         <div className="mx-auto max-w-[1200px]">
           <div className="text-center mx-auto">
             <Eyebrow>Onde inteligência vira faturamento</Eyebrow>
-            <h1 className="mt-2 mx-auto max-w-[1180px] text-[32px] md:text-[44px] lg:text-[48px] leading-[1.15]">
+            <h1 className="mt-2 mx-auto max-w-[1180px] text-[30px] md:text-[40px] lg:text-[44px] leading-[1.15]">
               Como dobrar ou triplicar as vendas da sua empresa com previsibilidade usando{" "}
               <span className="text-primary">Funil de Vendas + IA</span>
             </h1>
