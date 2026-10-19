@@ -18,21 +18,19 @@ import clientNextt from "@/assets/nextt-house.webp.asset.json";
 import clientCampevo from "@/assets/campevo.webp.asset.json";
 import clientAtoba from "@/assets/atoba.jpg.asset.json";
 import clientVersollato from "@/assets/clinica-versollato.webp.asset.json";
-import clientFormaq from "@/assets/formaq.jpeg.asset.json";
 
 const clientLogos = [
-  { src: clientA9.url, alt: "A9 Máquinas Agrícolas" },
-  { src: clientCiao.url, alt: "Ciao" },
-  { src: clientSpirit.url, alt: "Spirit Ventiladores" },
-  { src: clientMsBrazil.url, alt: "MS Brazil" },
-  { src: clientMjHome.url, alt: "MJ Home" },
-  { src: clientMeruoca.url, alt: "Meruoca" },
-  { src: clientLuna.url, alt: "Luna e Café" },
-  { src: clientNextt.url, alt: "Nextt House" },
-  { src: clientCampevo.url, alt: "Campevo" },
-  { src: clientAtoba.url, alt: "Átoba" },
-  { src: clientVersollato.url, alt: "Clínica Versollato" },
-  { src: clientFormaq.url, alt: "Formaq" },
+  { src: clientA9.url, alt: "A9 Máquinas Agrícolas", size: "max-h-10 max-w-[170px]" },
+  { src: clientCiao.url, alt: "Ciao", size: "max-h-[52px] max-w-[150px]" },
+  { src: clientSpirit.url, alt: "Spirit Ventiladores", size: "max-h-10 max-w-[170px]" },
+  { src: clientMsBrazil.url, alt: "MS Brazil", size: "max-h-[72px] max-w-[150px]" },
+  { src: clientMjHome.url, alt: "MJ Home", size: "max-h-[72px] max-w-[150px]" },
+  { src: clientMeruoca.url, alt: "Meruoca", size: "max-h-10 max-w-[170px]" },
+  { src: clientLuna.url, alt: "Luna e Café", size: "max-h-[52px] max-w-[150px]" },
+  { src: clientNextt.url, alt: "Nextt House", size: "max-h-10 max-w-[170px]" },
+  { src: clientCampevo.url, alt: "Campevo", size: "max-h-10 max-w-[170px]" },
+  { src: clientAtoba.url, alt: "Átoba", size: "max-h-[72px] max-w-[150px]" },
+  { src: clientVersollato.url, alt: "Clínica Versollato", size: "max-h-[72px] max-w-[150px]" },
 ];
 
 const experts = [
@@ -66,6 +64,7 @@ import {
   Sparkles,
   Phone,
   ChevronRight,
+  ChevronDown,
   Mail,
   MapPin,
   Play,
@@ -84,7 +83,7 @@ function CTAButton({
   label?: string;
   type?: "button" | "submit";
 }) {
-  const classes = `bg-cta hover:bg-cta-hover text-cta-foreground rounded-[10px] h-[52px] px-7 text-[15px] font-bold uppercase tracking-wide whitespace-normal text-center transition-colors ${className}`;
+  const classes = `bg-primary hover:bg-primary-hover text-primary-foreground rounded-[10px] h-[52px] px-7 text-[15px] font-bold uppercase tracking-wide whitespace-normal text-center transition-colors ${className}`;
   if (type === "submit") {
     return (
       <Button type="submit" size="lg" className={classes}>
@@ -253,10 +252,10 @@ const faqs = [
 ];
 
 const revenueOptions = [
-  "R$ 50 mil a R$ 100 mil",
-  "R$ 100 mil a R$ 200 mil",
-  "R$ 200 mil a R$ 500 mil",
-  "R$ 500 mil a R$ 1 milhão",
+  "De R$ 50 mil a R$ 100 mil",
+  "De R$ 100 mil a R$ 200 mil",
+  "De R$ 200 mil a R$ 500 mil",
+  "De R$ 500 mil a R$ 1 milhão",
   "Mais de R$ 1 milhão",
 ];
 
@@ -309,44 +308,38 @@ function LeadForm() {
       id="formulario"
       noValidate
       onSubmit={submit}
-      className="scroll-mt-24 w-full rounded-2xl border border-border bg-card p-6 md:p-7 shadow-form"
+      className="scroll-mt-24 w-full rounded-2xl border border-border bg-card p-5 md:p-6 shadow-form"
     >
       <h2 className="text-[22px] leading-tight">Solicite sua Análise Estratégica</h2>
       <p className="mt-1 text-sm text-muted-foreground">
         Analisamos seu marketing, funil, CRM e comercial e devolvemos um plano de ação.
       </p>
-      <div className="mt-5 grid gap-x-3 gap-y-3.5 sm:grid-cols-2">
+      <div className="mt-4 flex flex-col gap-3">
         <Field id="nome" label="Nome" placeholder="Seu nome" {...fieldProps("nome")} onChange={(x) => set("nome", x)} autoComplete="name" />
         <Field id="email" label="E-mail" type="email" placeholder="voce@empresa.com" {...fieldProps("email")} onChange={(x) => set("email", x)} autoComplete="email" />
         <Field id="whatsapp" label="WhatsApp" type="tel" placeholder="(00) 00000-0000" {...fieldProps("whatsapp")} onChange={(x) => set("whatsapp", maskPhone(x))} autoComplete="tel" />
         <Field id="empresa" label="Nome da empresa" placeholder="Sua empresa" {...fieldProps("empresa")} onChange={(x) => set("empresa", x)} autoComplete="organization" />
-      </div>
-      <fieldset className="mt-4">
-        <legend className="text-sm font-medium text-foreground mb-2">
-          Faturamento mensal <span className="text-muted-foreground font-normal">(opcional)</span>
-        </legend>
-        <div className="grid grid-cols-2 gap-2">
-          {revenueOptions.map((o) => {
-            const active = v.faturamento === o;
-            return (
-              <button
-                type="button"
-                key={o}
-                aria-pressed={active}
-                onClick={() => set("faturamento", active ? "" : o)}
-                className={`rounded-lg border px-3 py-2 text-left text-[13px] transition-colors ${
-                  active
-                    ? "border-primary bg-primary-soft text-primary font-medium"
-                    : "border-input bg-card text-foreground hover:border-primary/50"
-                }`}
-              >
-                {o}
-              </button>
-            );
-          })}
+        <div className="space-y-1.5">
+          <Label htmlFor="faturamento" className="text-sm font-medium text-foreground">
+            Faturamento mensal <span className="text-muted-foreground font-normal">(opcional)</span>
+          </Label>
+          <div className="relative">
+            <select
+              id="faturamento"
+              value={v.faturamento}
+              onChange={(e) => set("faturamento", e.target.value)}
+              className={`h-12 w-full appearance-none rounded-[10px] border border-input bg-card pl-3 pr-10 text-base md:text-sm outline-none transition focus:border-primary focus:ring-[3px] focus:ring-primary/15 ${v.faturamento ? "text-foreground" : "text-muted-foreground"}`}
+            >
+              <option value="">Selecione o faturamento mensal</option>
+              {revenueOptions.map((o) => (
+                <option key={o} value={o} className="text-foreground">{o}</option>
+              ))}
+            </select>
+            <ChevronDown className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+          </div>
         </div>
-      </fieldset>
-      <CTAButton type="submit" label="Quero minha análise estratégica" className="mt-5 w-full" />
+      </div>
+      <CTAButton type="submit" label="Quero minha análise estratégica" className="mt-4 w-full" />
       <div className="mt-3 space-y-1 text-xs text-muted-foreground">
         <p className="flex items-center justify-center gap-1.5">
           <Clock className="h-3.5 w-3.5" /> Leva menos de 1 minuto. Resposta em até 24h úteis.
@@ -361,11 +354,11 @@ function LeadForm() {
 
 function VSL() {
   return (
-    <div className="w-full md:w-[304px] shrink-0">
+    <div className="w-full md:w-auto shrink-0 flex flex-col">
       <button
         type="button"
         aria-label="Assistir vídeo"
-        className="group relative block w-full aspect-[9/16] max-h-[70vh] md:max-h-none rounded-[20px] overflow-hidden bg-navy"
+        className="group relative block w-full aspect-[9/16] max-h-[70vh] md:max-h-none md:h-full md:w-auto rounded-[20px] overflow-hidden bg-navy"
       >
         <img src={thiago} alt="Thiago Batizeli, fundador da Omnia" className="absolute inset-0 h-full w-full object-cover object-[78%_center]" />
         <span className="absolute inset-0 bg-navy/25" />
@@ -373,7 +366,7 @@ function VSL() {
           <Play className="h-6 w-6 ml-1 text-foreground" fill="currentColor" />
         </span>
       </button>
-      <p className="mt-2 text-center text-sm text-muted-foreground">Assista ao vídeo (2 min)</p>
+      
     </div>
   );
 }
@@ -423,7 +416,7 @@ export function LandingPage() {
           </a>
           <a
             href="#formulario"
-            className="inline-flex rounded-lg bg-cta hover:bg-cta-hover px-4 py-2 text-sm font-semibold text-cta-foreground transition-colors"
+            className="inline-flex rounded-lg bg-primary hover:bg-primary-hover px-4 py-2 text-sm font-semibold text-primary-foreground transition-colors"
           >
             Análise Estratégica
           </a>
@@ -431,20 +424,20 @@ export function LandingPage() {
       </header>
 
       {/* HERO */}
-      <section className="pt-[96px] md:pt-[100px] pb-10 md:pb-12 px-5 md:px-6">
+      <section className="pt-[88px] md:pt-[84px] pb-10 md:pb-12 px-5 md:px-6 bg-gradient-to-b from-primary-soft to-background">
         <div className="mx-auto max-w-[1200px]">
           <div className="text-center mx-auto">
             <Eyebrow>Onde inteligência vira faturamento</Eyebrow>
-            <h1 className="mt-3 mx-auto max-w-[1180px] text-[32px] md:text-[44px] lg:text-[48px] leading-[1.15]">
+            <h1 className="mt-2 mx-auto max-w-[1180px] text-[32px] md:text-[44px] lg:text-[48px] leading-[1.15]">
               Como dobrar ou triplicar as vendas da sua empresa com previsibilidade usando{" "}
               <span className="text-primary">Funil de Vendas + IA</span>
             </h1>
-            <p className="mt-3 mx-auto max-w-[720px] text-base md:text-lg text-muted-foreground">
+            <p className="mt-2 mx-auto max-w-[720px] text-base md:text-lg text-muted-foreground">
               Assista ao vídeo abaixo e entenda como funciona a nossa estratégia e metodologia.
             </p>
           </div>
 
-          <div className="mt-7 flex flex-col md:flex-row md:items-stretch md:justify-center gap-8 md:gap-12">
+          <div className="mt-5 flex flex-col md:flex-row md:items-stretch md:justify-center gap-8 md:gap-12">
             <VSL />
             <div ref={formWrap} className="w-full md:w-[440px] shrink-0">
               <LeadForm />
@@ -462,7 +455,7 @@ export function LandingPage() {
             ["13 anos", "de experiência"],
           ].map(([n, l]) => (
             <div key={l} className="py-8 px-3 text-center">
-              <div className="text-2xl md:text-[40px] font-bold leading-none text-foreground" style={{ fontFamily: "var(--font-display)" }}>{n}</div>
+              <div className="text-2xl md:text-[40px] font-bold leading-none text-primary" style={{ fontFamily: "var(--font-display)" }}>{n}</div>
               <div className="mt-2 text-xs md:text-sm text-muted-foreground">{l}</div>
             </div>
           ))}
@@ -471,14 +464,14 @@ export function LandingPage() {
 
       {/* AUTORIDADE */}
       <Section eyebrow="Autoridade" title="Empresas que confiam na Omnia" cta>
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
           {clientLogos.map((c) => (
             <div key={c.alt} className="group h-24 rounded-xl border border-border bg-card p-5 flex items-center justify-center">
               <img
                 src={c.src}
                 alt={c.alt}
                 loading="lazy"
-                className="max-h-10 max-w-[140px] w-auto object-contain grayscale opacity-70 transition group-hover:grayscale-0 group-hover:opacity-100"
+                className={`${c.size} w-auto h-auto object-contain`}
               />
             </div>
           ))}
@@ -501,7 +494,7 @@ export function LandingPage() {
       </Section>
 
       {/* CASE NOVE */}
-      <section data-reveal className="py-16 md:py-24 px-5 md:px-6 bg-navy text-navy-foreground">
+      <section data-reveal className="py-16 md:py-24 px-5 md:px-6 bg-gradient-to-br from-navy to-primary-hover text-navy-foreground">
         <div className="mx-auto max-w-[1200px]">
           <div className="text-center max-w-3xl mx-auto">
             <span className="inline-block rounded-full bg-navy-foreground/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-navy-foreground">
@@ -520,7 +513,7 @@ export function LandingPage() {
               ["29", "máquinas vendidas"],
               ["R$ 12 mi", "faturados"],
             ].map(([n, l], i) => (
-              <div key={l} className={`rounded-2xl border border-navy-foreground/12 bg-navy-foreground/6 p-5 md:p-6 text-center ${i === 4 ? "col-span-2 md:col-span-1" : ""}`}>
+              <div key={l} className={`rounded-2xl border border-navy-foreground/12 bg-navy-foreground/8 p-5 md:p-6 text-center ${i === 4 ? "col-span-2 md:col-span-1" : ""}`}>
                 <div className={`text-2xl md:text-3xl font-bold ${i === 4 ? "text-cta" : ""}`} style={{ fontFamily: "var(--font-display)" }}>{n}</div>
                 <div className="mt-1 text-sm text-navy-foreground/70">{l}</div>
               </div>
@@ -711,14 +704,14 @@ export function LandingPage() {
 
       {/* CTA FINAL */}
       <section data-reveal className="pb-16 md:pb-24 px-5 md:px-6">
-        <div className="mx-auto max-w-[1200px] rounded-2xl bg-primary-soft px-6 py-12 md:py-16 text-center">
+        <div className="mx-auto max-w-[1200px] rounded-2xl bg-primary text-primary-foreground px-6 py-12 md:py-16 text-center">
           <h2 className="text-[26px] md:text-[36px] leading-tight max-w-3xl mx-auto">
-            Vamos colocar <span className="text-primary">inteligência</span> no seu faturamento?
+            Vamos colocar inteligência no seu faturamento?
           </h2>
-          <p className="mt-4 max-w-2xl mx-auto text-muted-foreground">
+          <p className="mt-4 max-w-2xl mx-auto text-primary-foreground/85">
             Solicite uma análise estratégica e descubra como a Omnia pode estruturar um sistema previsível de crescimento para o seu negócio.
           </p>
-          <div className="mt-8"><CTAButton /></div>
+          <div className="mt-8"><CTAButton className="bg-card text-primary hover:bg-card/90" /></div>
         </div>
       </section>
 
@@ -758,7 +751,7 @@ export function LandingPage() {
       >
         <a
           href="#formulario"
-          className="flex w-full h-[52px] items-center justify-center gap-2 rounded-[10px] bg-cta hover:bg-cta-hover text-sm font-bold uppercase text-cta-foreground"
+          className="flex w-full h-[52px] items-center justify-center gap-2 rounded-[10px] bg-primary hover:bg-primary-hover text-sm font-bold uppercase text-primary-foreground"
         >
           {CTA_LABEL} <ArrowRight className="h-4 w-4" />
         </a>
