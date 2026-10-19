@@ -711,7 +711,7 @@ export function LandingPage() {
           <p className="mt-4 max-w-2xl mx-auto text-primary-foreground/85">
             Solicite uma análise estratégica e descubra como a Omnia pode estruturar um sistema previsível de crescimento para o seu negócio.
           </p>
-          <div className="mt-8"><CTAButton className="bg-card text-primary hover:bg-card/90" /></div>
+          <div className="mt-8"><CTAButton className="!bg-card !text-primary hover:!bg-card/90" /></div>
         </div>
       </section>
 
