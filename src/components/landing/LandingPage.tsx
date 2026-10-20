@@ -30,14 +30,14 @@ const clientLogos: Logo[] = [
   { src: clientA9.url, alt: "A9 Máquinas Agrícolas — Massey Ferguson" },
   { src: clientCiao.url, alt: "Ciao" },
   { src: clientSpirit.url, alt: "Spirit Ventiladores", h: "max-h-[31px]" },
-  { src: clientMsBrazil.url, alt: "MS Brazil" },
-  { src: clientMjHome.url, alt: "MJ Home" },
+  { src: clientMsBrazil.url, alt: "MS Brazil", h: "max-h-24 max-w-[200px]" },
+  { src: clientMjHome.url, alt: "MJ Home", h: "max-h-24 max-w-[200px]" },
   { src: clientMeruoca.url, alt: "Meruoca" },
   { src: clientLuna.url, alt: "Luna e Café" },
-  { src: clientNextt.url, alt: "Nextt House" },
+  { src: clientNextt.url, alt: "Nextt House", h: "max-h-24 max-w-[200px]" },
   { src: clientCampevo.url, alt: "Campevo" },
-  { src: clientAtoba.url, alt: "Átoba" },
-  { src: clientVersollato.url, alt: "Clínica Versollato" },
+  { src: clientAtoba.url, alt: "Átoba", h: "max-h-24 max-w-[200px]" },
+  { src: clientVersollato.url, alt: "Clínica Versollato", h: "max-h-24 max-w-[200px]" },
 ];
 
 const experts = [
@@ -70,7 +70,9 @@ function CTAButton({ className = "", label = CTA_LABEL }: { className?: string; 
   );
 }
 
-function Eyebrow({ children, dark }: { children: React.ReactNode; dark?: boolean }) {
+function Eyebrow(_: { children: React.ReactNode; dark?: boolean }) {
+  return null;
+  const { children, dark } = _;
   return (
     <span
       className={`inline-block rounded-full px-3.5 py-1.5 text-[12px] font-semibold uppercase tracking-[0.14em] ${
@@ -498,7 +500,7 @@ export function LandingPage() {
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden text-[17px] md:text-[18px] leading-[1.6]">
       <header className="fixed top-0 inset-x-0 z-50 h-[68px] bg-background/90 backdrop-blur border-b border-border">
         <div className="mx-auto max-w-[1200px] h-full flex items-center justify-between px-5 md:px-8">
-          <a href="#" className="text-[28px] font-bold lowercase tracking-tight text-foreground" style={{ fontFamily: "var(--font-display)" }}>
+          <a href="#" className="text-[34px] font-bold lowercase tracking-tight text-foreground" style={{ fontFamily: "var(--font-display)" }}>
             omnia
           </a>
           <a href="#formulario" onClick={goToForm} className="inline-flex min-h-11 items-center rounded-lg bg-primary hover:bg-primary-hover px-4 text-sm font-semibold text-primary-foreground transition-colors">
@@ -800,7 +802,7 @@ export function LandingPage() {
       <footer className="bg-offwhite border-t border-border px-5 md:px-8 pt-16 pb-28 md:pb-14">
         <div className="mx-auto max-w-[1200px] grid md:grid-cols-3 gap-10">
           <div>
-            <div className="text-[32px] font-bold lowercase tracking-tight leading-none" style={{ fontFamily: "var(--font-display)" }}>omnia</div>
+            <div className="text-[40px] font-bold lowercase tracking-tight leading-none" style={{ fontFamily: "var(--font-display)" }}>omnia</div>
             <div className="mt-1 text-xs uppercase tracking-[0.2em] text-muted-foreground">Inteligência Digital</div>
             <p className="mt-4 text-sm text-muted-foreground">Funis de Vendas • Inteligência Artificial • Growth Marketing</p>
             <p className="mt-2 text-sm text-primary font-medium">Onde Inteligência Vira Faturamento.</p>
