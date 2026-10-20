@@ -31,13 +31,13 @@ const clientLogos: Logo[] = [
   { src: clientCiao.url, alt: "Ciao" },
   { src: clientSpirit.url, alt: "Spirit Ventiladores", h: "max-h-[34px] max-w-[126px]" },
   { src: clientMsBrazil.url, alt: "MS Brazil", h: "max-h-[58px] max-w-[150px]" },
-  { src: clientMjHome.url, alt: "MJ Home", h: "max-h-[62px] max-w-[146px]" },
+  { src: clientMjHome.url, alt: "MJ Home", h: "max-h-[72px] max-w-[160px]" },
   { src: clientMeruoca.url, alt: "Meruoca", h: "max-h-[62px] max-w-[132px]" },
   { src: clientLuna.url, alt: "Luna e Café" },
   { src: clientNextt.url, alt: "Nextt House", h: "max-h-[58px] max-w-[150px]" },
   { src: clientCampevo.url, alt: "Campevo" },
-  { src: clientAtoba.url, alt: "Átoba", h: "max-h-[62px] max-w-[146px]" },
-  { src: clientVersollato.url, alt: "Clínica Versollato", h: "max-h-[52px] max-w-[142px]" },
+  { src: clientAtoba.url, alt: "Átoba", h: "max-h-[72px] max-w-[160px]" },
+  { src: clientVersollato.url, alt: "Clínica Versollato", h: "max-h-[64px] max-w-[152px]" },
 ];
 
 const experts = [
@@ -70,16 +70,8 @@ function CTAButton({ className = "", label = CTA_LABEL }: { className?: string; 
   );
 }
 
-function Eyebrow({ children, dark }: { children: React.ReactNode; dark?: boolean }) {
-  return (
-    <span
-      className={`inline-block rounded-full px-3.5 py-1.5 text-[12px] font-semibold uppercase tracking-[0.14em] ${
-        dark ? "bg-navy-foreground/10 text-navy-foreground" : "bg-primary-soft text-primary"
-      }`}
-    >
-      {children}
-    </span>
-  );
+function Eyebrow(_: { children: React.ReactNode; dark?: boolean }) {
+  return null;
 }
 
 type Tone = "white" | "off" | "navy";
@@ -103,7 +95,7 @@ function Section({
           <div className="mb-12 md:mb-16 max-w-[760px] mx-auto text-center">
             {eyebrow && <Eyebrow dark={dark}>{eyebrow}</Eyebrow>}
             {title && (
-              <h2 className="mt-5 text-[28px] md:text-[42px] leading-[1.15] tracking-[-0.02em] text-balance">{title}</h2>
+              <h2 className="text-[28px] md:text-[42px] leading-[1.15] tracking-[-0.02em] text-balance">{title}</h2>
             )}
             {intro && (
               <p className={`mt-5 mx-auto max-w-[680px] text-[17px] md:text-[18px] leading-[1.6] ${dark ? "text-navy-foreground/75" : "text-muted-foreground"}`}>
@@ -434,7 +426,7 @@ function VSL() {
 /* ---------- Logo marquee ---------- */
 function LogoCard({ l }: { l: Logo }) {
   return (
-    <div className="group/logo h-[84px] w-[186px] shrink-0 rounded-2xl border border-border bg-card flex items-center justify-center px-7">
+    <div className="group/logo h-[92px] w-[196px] shrink-0 rounded-2xl border border-border bg-card flex items-center justify-center px-7">
       <img
         src={l.src}
         alt={l.alt}
