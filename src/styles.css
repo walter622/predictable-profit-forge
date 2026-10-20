@@ -43,6 +43,7 @@
   --color-primary-hover: var(--primary-hover);
   --color-logo-border: var(--logo-border);
   --color-navy: var(--navy);
+  --color-offwhite: var(--offwhite);
   --color-navy-foreground: var(--navy-foreground);
   --font-display: 'Plus Jakarta Sans', 'Inter', sans-serif;
   --color-secondary: var(--secondary);
@@ -75,6 +76,7 @@
 :root {
   --radius: 1rem;
   --background: oklch(1 0 0);
+  --offwhite: oklch(0.983 0.004 255);
   --foreground: oklch(0.18 0.02 265);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.18 0.02 265);
@@ -93,7 +95,7 @@
   --secondary: oklch(0.976 0.005 250);
   --secondary-foreground: oklch(0.18 0.02 265);
   --muted: oklch(0.976 0.005 250);
-  --muted-foreground: oklch(0.49 0.03 265);
+  --muted-foreground: oklch(0.52 0.04 258);
   --accent: oklch(0.965 0.018 264);
   --accent-foreground: oklch(0.578 0.198 254.6);
   --destructive: oklch(0.577 0.215 27.3);
@@ -101,7 +103,7 @@
   --border: oklch(0.93 0.01 265);
   --input: oklch(0.872 0.013 262);
   --ring: oklch(0.578 0.198 254.6);
-  --navy: oklch(0.17 0.05 250);
+  --navy: oklch(0.21 0.07 258);
   --navy-foreground: oklch(1 0 0);
   --shadow-card: 0 1px 2px rgb(16 24 40 / 0.06);
   --shadow-form: 0 12px 32px -8px rgb(16 24 40 / 0.12), 0 2px 6px rgb(16 24 40 / 0.05);
@@ -226,4 +228,22 @@ html { scroll-behavior: smooth; }
 @keyframes fade-in-up {
   from { opacity: 0; transform: translateY(6px); }
   to { opacity: 1; transform: none; }
+}
+
+@utility shadow-cta-blue { box-shadow: 0 10px 24px -10px color-mix(in oklab, var(--primary) 60%, transparent); }
+@keyframes marquee-l { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@keyframes marquee-r { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+@utility marquee-l { animation: marquee-l 40s linear infinite; }
+@utility marquee-r { animation: marquee-r 50s linear infinite; }
+@utility marquee-mask {
+  mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+}
+.marquee-wrap:hover .marquee-track, .marquee-wrap:active .marquee-track { animation-play-state: paused; }
+@keyframes draw-line { from { stroke-dashoffset: 400; } to { stroke-dashoffset: 0; } }
+@utility draw-line { stroke-dasharray: 400; animation: draw-line 2s ease-out forwards; }
+@media (prefers-reduced-motion: reduce) {
+  .motion-marquee { display: none !important; }
+  .motion-static { display: grid !important; }
+  .marquee-track, .draw-line { animation: none !important; }
+  html { scroll-behavior: auto; }
 }
