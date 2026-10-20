@@ -571,11 +571,11 @@ export function LandingPage() {
             <Eyebrow dark>Case de lançamento</Eyebrow>
             <h2 className="mt-5 text-[30px] md:text-[48px] leading-[1.1] tracking-[-0.02em] text-balance">29 máquinas agrícolas vendidas em 48 horas</h2>
             <p className="mt-5 mx-auto max-w-[680px] text-navy-foreground/75">
-              A Nove queria vender máquinas de alto valor em um formato que o agro ainda pouco usa: um lançamento digital. Estruturamos o funil completo, 15 dias de captação de leads e uma janela de vendas de 48 horas. Saíram tratores, plantadeiras e colheitadeiras.
+              A9 queria vender máquinas de alto valor em um formato que o agro ainda pouco usa: um lançamento digital. Estruturamos o funil completo, 15 dias de captação de leads e uma janela de vendas de 48 horas. Saíram tratores, plantadeiras e colheitadeiras.
             </p>
           </div>
           <div className="mt-12 grid grid-cols-2 md:grid-cols-5 gap-3 md:gap-4">
-            {[["R$ 40 mil", "investidos em tráfego pago"], ["15 dias", "de captação"], ["48 horas", "de vendas"], ["29", "máquinas vendidas"], ["R$ 12 mi", "faturados"]].map(([n, l], i) => {
+            {[["R$ 40 mil", "investidos em tráfego pago"], ["15 dias", "de captação"], ["48 horas", "de vendas"], ["29", "máquinas vendidas"], ["R$ 12 milhões", "faturados"]].map(([n, l], i) => {
               const hero = i === 4;
               return (
                 <div key={l} className={`rounded-[18px] border p-6 text-center ${hero ? "col-span-2 md:col-span-1 order-first md:order-none border-cta/40 bg-cta/10" : "border-navy-foreground/12 bg-navy-foreground/5"}`}>
