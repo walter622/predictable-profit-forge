@@ -27,16 +27,16 @@ import {
 
 type Logo = { src: string; alt: string; h?: string };
 const clientLogos: Logo[] = [
-  { src: clientA9.url, alt: "A9 Máquinas Agrícolas — Massey Ferguson" },
+  { src: clientA9.url, alt: "A9 Máquinas Agrícolas — Massey Ferguson", h: "max-h-[58px] max-w-[128px]" },
   { src: clientCiao.url, alt: "Ciao" },
   { src: clientSpirit.url, alt: "Spirit Ventiladores", h: "max-h-[34px] max-w-[126px]" },
   { src: clientMsBrazil.url, alt: "MS Brazil", h: "max-h-[52px] max-w-[142px]" },
-  { src: clientMjHome.url, alt: "MJ Home", h: "max-h-[52px] max-w-[142px]" },
-  { src: clientMeruoca.url, alt: "Meruoca" },
+  { src: clientMjHome.url, alt: "MJ Home", h: "max-h-[58px] max-w-[142px]" },
+  { src: clientMeruoca.url, alt: "Meruoca", h: "max-h-[58px] max-w-[128px]" },
   { src: clientLuna.url, alt: "Luna e Café" },
   { src: clientNextt.url, alt: "Nextt House", h: "max-h-[52px] max-w-[142px]" },
   { src: clientCampevo.url, alt: "Campevo" },
-  { src: clientAtoba.url, alt: "Átoba", h: "max-h-[52px] max-w-[142px]" },
+  { src: clientAtoba.url, alt: "Átoba", h: "max-h-[58px] max-w-[142px]" },
   { src: clientVersollato.url, alt: "Clínica Versollato", h: "max-h-[52px] max-w-[142px]" },
 ];
 
