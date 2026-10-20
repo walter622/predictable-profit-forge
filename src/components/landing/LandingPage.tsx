@@ -27,17 +27,17 @@ import {
 
 type Logo = { src: string; alt: string; h?: string };
 const clientLogos: Logo[] = [
-  { src: clientA9.url, alt: "A9 Máquinas Agrícolas — Massey Ferguson" },
+  { src: clientA9.url, alt: "A9 Máquinas Agrícolas — Massey Ferguson", h: "max-h-[62px] max-w-[132px]" },
   { src: clientCiao.url, alt: "Ciao" },
-  { src: clientSpirit.url, alt: "Spirit Ventiladores", h: "max-h-[31px] max-w-[150px]" },
-  { src: clientMsBrazil.url, alt: "MS Brazil", h: "max-h-24 max-w-[200px]" },
-  { src: clientMjHome.url, alt: "MJ Home", h: "max-h-24 max-w-[200px]" },
-  { src: clientMeruoca.url, alt: "Meruoca" },
+  { src: clientSpirit.url, alt: "Spirit Ventiladores", h: "max-h-[34px] max-w-[126px]" },
+  { src: clientMsBrazil.url, alt: "MS Brazil", h: "max-h-[58px] max-w-[150px]" },
+  { src: clientMjHome.url, alt: "MJ Home", h: "max-h-[62px] max-w-[146px]" },
+  { src: clientMeruoca.url, alt: "Meruoca", h: "max-h-[62px] max-w-[132px]" },
   { src: clientLuna.url, alt: "Luna e Café" },
-  { src: clientNextt.url, alt: "Nextt House", h: "max-h-24 max-w-[200px]" },
+  { src: clientNextt.url, alt: "Nextt House", h: "max-h-[58px] max-w-[150px]" },
   { src: clientCampevo.url, alt: "Campevo" },
-  { src: clientAtoba.url, alt: "Átoba", h: "max-h-24 max-w-[200px]" },
-  { src: clientVersollato.url, alt: "Clínica Versollato", h: "max-h-24 max-w-[200px]" },
+  { src: clientAtoba.url, alt: "Átoba", h: "max-h-[62px] max-w-[146px]" },
+  { src: clientVersollato.url, alt: "Clínica Versollato", h: "max-h-[52px] max-w-[142px]" },
 ];
 
 const experts = [
@@ -70,9 +70,7 @@ function CTAButton({ className = "", label = CTA_LABEL }: { className?: string; 
   );
 }
 
-function Eyebrow(_: { children: React.ReactNode; dark?: boolean }) {
-  return null;
-  const { children, dark } = _;
+function Eyebrow({ children, dark }: { children: React.ReactNode; dark?: boolean }) {
   return (
     <span
       className={`inline-block rounded-full px-3.5 py-1.5 text-[12px] font-semibold uppercase tracking-[0.14em] ${
@@ -436,12 +434,12 @@ function VSL() {
 /* ---------- Logo marquee ---------- */
 function LogoCard({ l }: { l: Logo }) {
   return (
-    <div className="group/logo h-24 w-[200px] shrink-0 rounded-2xl border border-border bg-card flex items-center justify-center px-6">
+    <div className="group/logo h-[84px] w-[186px] shrink-0 rounded-2xl border border-border bg-card flex items-center justify-center px-7">
       <img
         src={l.src}
         alt={l.alt}
         loading="lazy"
-        className={`${l.h ?? "max-h-12 max-w-[150px]"} w-auto h-auto object-contain grayscale opacity-70 transition duration-300 group-hover/logo:grayscale-0 group-hover/logo:opacity-100`}
+        className={`${l.h ?? "max-h-[46px] max-w-[128px]"} w-auto h-auto object-contain opacity-85 transition duration-300 group-hover/logo:opacity-100`}
       />
     </div>
   );
