@@ -27,16 +27,16 @@ import {
 
 type Logo = { src: string; alt: string; h?: string };
 const clientLogos: Logo[] = [
-  { src: clientA9.url, alt: "A9 Máquinas Agrícolas — Massey Ferguson", h: "max-h-[58px] max-w-[128px]" },
+  { src: clientA9.url, alt: "A9 Máquinas Agrícolas — Massey Ferguson", h: "max-h-[62px] max-w-[132px]" },
   { src: clientCiao.url, alt: "Ciao" },
   { src: clientSpirit.url, alt: "Spirit Ventiladores", h: "max-h-[34px] max-w-[126px]" },
-  { src: clientMsBrazil.url, alt: "MS Brazil", h: "max-h-[52px] max-w-[142px]" },
-  { src: clientMjHome.url, alt: "MJ Home", h: "max-h-[58px] max-w-[142px]" },
-  { src: clientMeruoca.url, alt: "Meruoca", h: "max-h-[58px] max-w-[128px]" },
+  { src: clientMsBrazil.url, alt: "MS Brazil", h: "max-h-[58px] max-w-[150px]" },
+  { src: clientMjHome.url, alt: "MJ Home", h: "max-h-[62px] max-w-[146px]" },
+  { src: clientMeruoca.url, alt: "Meruoca", h: "max-h-[62px] max-w-[132px]" },
   { src: clientLuna.url, alt: "Luna e Café" },
-  { src: clientNextt.url, alt: "Nextt House", h: "max-h-[52px] max-w-[142px]" },
+  { src: clientNextt.url, alt: "Nextt House", h: "max-h-[58px] max-w-[150px]" },
   { src: clientCampevo.url, alt: "Campevo" },
-  { src: clientAtoba.url, alt: "Átoba", h: "max-h-[58px] max-w-[142px]" },
+  { src: clientAtoba.url, alt: "Átoba", h: "max-h-[62px] max-w-[146px]" },
   { src: clientVersollato.url, alt: "Clínica Versollato", h: "max-h-[52px] max-w-[142px]" },
 ];
 
@@ -439,7 +439,7 @@ function LogoCard({ l }: { l: Logo }) {
         src={l.src}
         alt={l.alt}
         loading="lazy"
-        className={`${l.h ?? "max-h-[46px] max-w-[128px]"} w-auto h-auto object-contain grayscale opacity-70 transition duration-300 group-hover/logo:grayscale-0 group-hover/logo:opacity-100`}
+        className={`${l.h ?? "max-h-[46px] max-w-[128px]"} w-auto h-auto object-contain opacity-85 transition duration-300 group-hover/logo:opacity-100`}
       />
     </div>
   );
