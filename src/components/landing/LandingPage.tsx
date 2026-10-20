@@ -336,14 +336,14 @@ function LeadForm() {
       id="formulario"
       noValidate
       onSubmit={submit}
-      className="scroll-mt-28 relative w-full h-full rounded-[20px] border border-primary/25 bg-card p-6 md:p-7 shadow-form ring-4 ring-primary/5"
+      className="scroll-mt-28 relative w-full h-full rounded-[20px] border border-primary/25 bg-card p-6 md:p-6 shadow-form ring-4 ring-primary/5"
     >
       <h2 className="text-[22px] md:text-[24px] leading-tight">Solicite sua Análise Estratégica</h2>
       <p className="mt-1.5 text-[15px] text-muted-foreground leading-snug">
         Analisamos seu marketing, funil, CRM e comercial e devolvemos um plano de ação.
       </p>
       {Object.entries(tracking).map(([k, val]) => <input key={k} type="hidden" name={k} value={val} />)}
-      <div className="mt-5 flex flex-col gap-3">
+      <div className="mt-4 flex flex-col gap-3">
         <FloatField id="nome" label="Nome" value={v.nome} error={err("nome")} onBlur={blur("nome")} onChange={(x) => set("nome", x)} autoComplete="name" />
         <FloatField id="email" label="E-mail" type="email" value={v.email} error={err("email")} onBlur={blur("email")} onChange={(x) => set("email", x)} autoComplete="email" />
         <FloatField id="whatsapp" label="WhatsApp" type="tel" inputMode="numeric" value={v.whatsapp} error={err("whatsapp")} onBlur={blur("whatsapp")} onChange={(x) => set("whatsapp", maskPhone(x))} autoComplete="tel" />
@@ -508,20 +508,20 @@ export function LandingPage() {
       </header>
 
       {/* HERO */}
-      <section className="pt-[92px] md:pt-[96px] pb-12 md:pb-16 px-5 md:px-8 bg-gradient-to-b from-primary-soft via-background to-background">
+      <section className="pt-[92px] md:pt-[88px] pb-12 md:pb-16 px-5 md:px-8 bg-gradient-to-b from-primary-soft via-background to-background">
         <div className="mx-auto max-w-[1200px]">
-          <div className="text-center mx-auto max-w-[980px]">
+          <div className="text-center mx-auto max-w-[1120px]">
             <Eyebrow>Onde inteligência vira faturamento</Eyebrow>
-            <h1 className="mt-4 text-[34px] md:text-[48px] lg:text-[54px] leading-[1.08] tracking-[-0.03em] text-balance">
+            <h1 className="mt-3 text-[34px] md:text-[42px] lg:text-[46px] leading-[1.08] tracking-[-0.03em] text-balance">
               Como dobrar ou triplicar as vendas da sua empresa com previsibilidade usando{" "}
               <span className="text-primary">Funil de Vendas + IA</span>
             </h1>
-            <p className="mt-4 mx-auto max-w-[680px] text-[17px] md:text-[19px] text-muted-foreground">
+            <p className="mt-3 mx-auto max-w-[680px] text-[17px] md:text-[18px] text-muted-foreground">
               Assista ao vídeo abaixo e entenda como funciona a nossa estratégia e metodologia.
             </p>
           </div>
 
-          <div className="mt-8 grid gap-6 md:grid-cols-[minmax(0,320px)_minmax(0,440px)] md:justify-center md:items-stretch md:gap-10">
+          <div className="mt-6 grid gap-6 md:grid-cols-[minmax(0,320px)_minmax(0,440px)] md:justify-center md:items-stretch md:gap-10">
             <VSL />
             <div ref={formWrap} className="w-full">
               <LeadForm />
