@@ -70,9 +70,7 @@ function CTAButton({ className = "", label = CTA_LABEL }: { className?: string; 
   );
 }
 
-function Eyebrow(_: { children: React.ReactNode; dark?: boolean }) {
-  return null;
-  const { children, dark } = _;
+function Eyebrow({ children, dark }: { children: React.ReactNode; dark?: boolean }) {
   return (
     <span
       className={`inline-block rounded-full px-3.5 py-1.5 text-[12px] font-semibold uppercase tracking-[0.14em] ${
@@ -436,12 +434,12 @@ function VSL() {
 /* ---------- Logo marquee ---------- */
 function LogoCard({ l }: { l: Logo }) {
   return (
-    <div className="group/logo h-24 w-[200px] shrink-0 rounded-2xl border border-border bg-card flex items-center justify-center px-6">
+    <div className="group/logo h-[84px] w-[186px] shrink-0 rounded-2xl border border-border bg-card flex items-center justify-center px-7">
       <img
         src={l.src}
         alt={l.alt}
         loading="lazy"
-        className={`${l.h ?? "max-h-12 max-w-[150px]"} w-auto h-auto object-contain grayscale opacity-70 transition duration-300 group-hover/logo:grayscale-0 group-hover/logo:opacity-100`}
+        className={`${l.h ?? "max-h-[46px] max-w-[128px]"} w-auto h-auto object-contain grayscale opacity-70 transition duration-300 group-hover/logo:grayscale-0 group-hover/logo:opacity-100`}
       />
     </div>
   );
