@@ -571,7 +571,7 @@ export function LandingPage() {
             <Eyebrow dark>Case de lançamento</Eyebrow>
             <h2 className="mt-5 text-[30px] md:text-[48px] leading-[1.1] tracking-[-0.02em] text-balance">29 máquinas agrícolas vendidas em 48 horas</h2>
             <p className="mt-5 mx-auto max-w-[680px] text-navy-foreground/75">
-              A Nove Máquinas Agrícolas queria vender máquinas de alto valor em um formato que o agro ainda pouco usa: um lançamento digital. Estruturamos o funil completo, 15 dias de captação de leads e uma janela de vendas de 48 horas. Saíram tratores, plantadeiras e colheitadeiras.
+              A Nove queria vender máquinas de alto valor em um formato que o agro ainda pouco usa: um lançamento digital. Estruturamos o funil completo, 15 dias de captação de leads e uma janela de vendas de 48 horas. Saíram tratores, plantadeiras e colheitadeiras.
             </p>
           </div>
           <div className="mt-12 grid grid-cols-2 md:grid-cols-5 gap-3 md:gap-4">
