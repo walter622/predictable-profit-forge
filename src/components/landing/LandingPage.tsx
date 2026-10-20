@@ -29,7 +29,7 @@ type Logo = { src: string; alt: string; h?: string };
 const clientLogos: Logo[] = [
   { src: clientA9.url, alt: "A9 Máquinas Agrícolas — Massey Ferguson" },
   { src: clientCiao.url, alt: "Ciao" },
-  { src: clientSpirit.url, alt: "Spirit Ventiladores", h: "max-h-[31px]" },
+  { src: clientSpirit.url, alt: "Spirit Ventiladores", h: "max-h-[31px] max-w-[150px]" },
   { src: clientMsBrazil.url, alt: "MS Brazil", h: "max-h-24 max-w-[200px]" },
   { src: clientMjHome.url, alt: "MJ Home", h: "max-h-24 max-w-[200px]" },
   { src: clientMeruoca.url, alt: "Meruoca" },
@@ -441,7 +441,7 @@ function LogoCard({ l }: { l: Logo }) {
         src={l.src}
         alt={l.alt}
         loading="lazy"
-        className={`${l.h ?? "max-h-12"} max-w-[150px] w-auto h-auto object-contain grayscale opacity-70 transition duration-300 group-hover/logo:grayscale-0 group-hover/logo:opacity-100`}
+        className={`${l.h ?? "max-h-12 max-w-[150px]"} w-auto h-auto object-contain grayscale opacity-70 transition duration-300 group-hover/logo:grayscale-0 group-hover/logo:opacity-100`}
       />
     </div>
   );
